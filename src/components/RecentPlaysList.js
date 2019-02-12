@@ -10,7 +10,7 @@ class RecentPlaysList extends Component {
 	renderList() {
 		return this.props.songs.map( song => {
 			return (
-				<div key={song.mbid} class="ui card four wide column">
+				<div key={song.mbid} style={{marginTop: '14px'}} class="ui card four wide column">
 				  <div class="image">
 				    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 				  </div>
@@ -25,8 +25,12 @@ class RecentPlaysList extends Component {
 				  </div>
 				  <div class="extra content">
 				    <p>
-				      <i class="user icon"> Genres:</i>
-				      22 Friends
+				      <i class="info icon"></i>
+				      blah blah
+				    </p>
+				    <p>
+				    	<i class="music icon"></i>
+				    	Genres: TBD	
 				    </p>
 				  </div>
 				</div>

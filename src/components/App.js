@@ -4,7 +4,7 @@ import RecentPlaysList from './RecentPlaysList';
 const App = () => {
 	return (
 		<div className="ui container">
-			App
+			<h1>What Have You Been Listening to?</h1>
 			<RecentPlaysList />
 		</div>
 	)
