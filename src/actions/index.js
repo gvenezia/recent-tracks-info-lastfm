@@ -1,3 +1,10 @@
-export const fetchSongs = () => {
-	return { type: 'FETCH'}
+import axiosLastfm from '../apis/lastfm.js';
+
+export const fetchSongs = async () => {
+	const response = await axiosLastfm.get('?method=user.getrecenttracks&user=grrtano');
+
+	return { 
+		type: 'FETCH',
+		payload: response
+	}
 }
