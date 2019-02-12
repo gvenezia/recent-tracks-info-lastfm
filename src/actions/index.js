@@ -12,6 +12,6 @@ export const fetchSongs = () =>  async (dispatch, getState) => {
 
 	dispatch( { 
 		type: 'FETCH',
-		payload: response
+		payload: response.data.recenttracks.track
 	});
 };

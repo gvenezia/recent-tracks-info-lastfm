@@ -8,6 +8,7 @@ class RecentPlaysList extends Component {
 	}
 
 	render(){
+		console.log(this.props);
 		return (
 			<li>
 				<ul>1</ul>	
@@ -16,4 +17,8 @@ class RecentPlaysList extends Component {
 	}
 }
 
-export default connect(null, { fetchSongs })(RecentPlaysList);
+const mapStateToProps = state => {
+	return { songs: state.songs }
+}
+
+export default connect(mapStateToProps, { fetchSongs })(RecentPlaysList);
