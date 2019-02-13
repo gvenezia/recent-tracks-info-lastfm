@@ -5,7 +5,7 @@ import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 	// Within the function, we then dispatch the object manually
 export const fetchSongs = () =>  async (dispatch, getState) => {
 	const response = await axiosLastfm.get(
-		'?method=user.getrecenttracks&user=grrtano' + lastfmKeyAndConfig
+		'?method=user.getrecenttracks&user=grrtano&limit=10' + lastfmKeyAndConfig
 	);
 
 	console.log(response.data);
@@ -16,12 +16,12 @@ export const fetchSongs = () =>  async (dispatch, getState) => {
 	});
 };
 
-export const fetchArtist = () =>  async (dispatch, getState) => {
+export const fetchArtist = (artist) =>  async (dispatch, getState) => {
 	const response = await axiosLastfm.get(
-		'?method=artist.getinfo&artist=Cher&user=grrtano' + lastfmKeyAndConfig
+		`?method=artist.getinfo&artist=${artist}&user=grrtano${lastfmKeyAndConfig}`
 	);
 
-	console.log(response.data);
+	console.log(response.data.artist);
 
 	dispatch( { 
 		type: 'FETCH_ARTIST',

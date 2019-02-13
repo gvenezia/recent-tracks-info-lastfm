@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
+import ArtistInfo from './ArtistInfo';
+
 import { connect } from 'react-redux';
 import { fetchSongs } from '../actions';
-import { fetchArtist } from '../actions';
+// import { fetchArtist } from '../actions';
 
 
 
 class RecentPlaysList extends Component {
 	componentDidMount() {
 		this.props.fetchSongs();
-		this.props.fetchArtist();
 	}
 
 	renderList() {
+		// let count = 0;
 		return this.props.songs.map( (song, i) => {
+			
+
+			// setTimeout( () => {
+			// 	console.log(count);
+			// 	this.props.fetchArtist(song.artist['#text'])
+			// }, 3000 + (i * 3000))
+			
+
 			return (
 				<div key={i} style={{marginTop: '14px'}} className="ui card four wide column">
 				  <div className="image">
@@ -27,6 +37,7 @@ class RecentPlaysList extends Component {
 				      {song.artist['#text']} — {song.album['#text']}
 				    </div>
 				  </div>
+				  <ArtistInfo artist={song.artist['#text']}/>
 				  <div className="extra content">
 				    <p>
 				      <i className="info icon"></i>
@@ -43,7 +54,6 @@ class RecentPlaysList extends Component {
 	}
 
 	render(){
-		console.log(this.props);
 		return (
 			<div className='ui grid'>
 				{this.renderList()}
@@ -56,4 +66,4 @@ const mapStateToProps = state => {
 	return { songs: state.songs }
 }
 
-export default connect(mapStateToProps, { fetchSongs, fetchArtist })(RecentPlaysList);
+export default connect(mapStateToProps, { fetchSongs })(RecentPlaysList);
