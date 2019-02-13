@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSongs } from '../actions'
+import { fetchSongs } from '../actions';
+import { fetchArtist } from '../actions';
+
+
 
 class RecentPlaysList extends Component {
 	componentDidMount() {
 		this.props.fetchSongs();
+		this.props.fetchArtist();
 	}
 
 	renderList() {
-		return this.props.songs.map( song => {
+		return this.props.songs.map( (song, i) => {
 			return (
-				<div key={song.mbid} style={{marginTop: '14px'}} class="ui card four wide column">
-				  <div class="image">
+				<div key={i} style={{marginTop: '14px'}} className="ui card four wide column">
+				  <div className="image">
 				    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 				  </div>
-				  <div class="content">
-				    <p class="header">"{song.name}"</p>
-				    <div class="meta">
-				      <span class="date">{song.date['#text']}</span>
+				  <div className="content">
+				    <p className="header">"{song.name}"</p>
+				    <div className="meta">
+				      <span className="date">{song.date['#text']}</span>
 				    </div>
-				    <div class="description">
+				    <div className="description">
 				      {song.artist['#text']} — {song.album['#text']}
 				    </div>
 				  </div>
-				  <div class="extra content">
+				  <div className="extra content">
 				    <p>
-				      <i class="info icon"></i>
+				      <i className="info icon"></i>
 				      blah blah
 				    </p>
 				    <p>
-				    	<i class="music icon"></i>
+				    	<i className="music icon"></i>
 				    	Genres: TBD	
 				    </p>
 				  </div>
@@ -52,4 +56,4 @@ const mapStateToProps = state => {
 	return { songs: state.songs }
 }
 
-export default connect(mapStateToProps, { fetchSongs })(RecentPlaysList);
+export default connect(mapStateToProps, { fetchSongs, fetchArtist })(RecentPlaysList);

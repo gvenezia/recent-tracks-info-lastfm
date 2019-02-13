@@ -11,7 +11,20 @@ export const fetchSongs = () =>  async (dispatch, getState) => {
 	console.log(response.data);
 
 	dispatch( { 
-		type: 'FETCH',
+		type: 'FETCH_SONGS',
 		payload: response.data.recenttracks.track
+	});
+};
+
+export const fetchArtist = () =>  async (dispatch, getState) => {
+	const response = await axiosLastfm.get(
+		'?method=artist.getinfo&artist=Cher&user=grrtano' + lastfmKeyAndConfig
+	);
+
+	console.log(response.data);
+
+	dispatch( { 
+		type: 'FETCH_ARTIST',
+		payload: response.data.artist
 	});
 };

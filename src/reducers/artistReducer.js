@@ -1,6 +1,6 @@
 export default (state = [], action) => {
 	switch (action.type){
-		case 'FETCH_SONGS':
+		case 'FETCH_ARTIST':
 			return action.payload;
 
 		default:
