@@ -11,16 +11,16 @@ class RecentPlaysList extends Component {
 	}
 
 	renderList() {
+		// Helper function to test whether a property exists
+		const exists = prop => typeof prop !== 'undefined';
+
 		return this.props.songs.map( (song, i) => {
-			let	name = typeof song.name !== 'undefined' ? song.name : 'N/A',
-				artist = typeof song.artist['#text'] !== 'undefined' ? song.artist['#text'] : 'N/A',
-				album = typeof song.album['#text'] !== 'undefined' ? song.album['#text'] : 'N/A',
-				date = typeof song.date !== 'undefined' ? song.date['#text'] : 'N/A',
-				playing = typeof song['@attr'] !== 'undefined' ? true : false ;
+			let	name = exists(song.name) ? song.name : 'N/A',
+				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
+				album = exists(song.album) ? song.album['#text'] : 'N/A',
+				date = exists(song.date) ? song.date['#text'] : 'N/A';
 
 			let artistObj = this.props.artists.find( curr => curr.name === artist);
-
-			console.log(  );
 
 			// Create larger cards for the two most recent tracks
 			if (i < 2) {
@@ -30,7 +30,6 @@ class RecentPlaysList extends Component {
 						song={song} 
 						artist={artist}
 						date={date}
-						playing={playing}
 					/>
 				)	
 			}
@@ -39,17 +38,13 @@ class RecentPlaysList extends Component {
 			return (
 				<div key={i} style={{marginTop: '14px'}} className="four wide column">
 					<div className="ui card">
-					  <div className="image left floated medium">
+					  <div className="image left">
 					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 					  </div>
 					  <div className="content">
 					    <p className="header">"{name}"</p>
 					    <div className="meta">
-					      <span className="date">
-					      	{ playing === true ?
-					      		'Currently listening':
-					      		date }
-					      </span>
+					      <span className="date">{ date }</span>
 					    </div>
 					    <div className="description">
 					      {artist} — {album}
@@ -72,8 +67,8 @@ class RecentPlaysList extends Component {
 				    </div>	
 				</div>
 			)
-		});
-	}
+		}); 
+	} // End renderList()
 
 	render(){
 		return (

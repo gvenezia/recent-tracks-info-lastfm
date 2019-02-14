@@ -7,9 +7,10 @@ class FeaturedSongCard extends Component {
 		let song = this.props.song,
 			artist = this.props.artist,
 			date = this.props.date,
-			playing = this.props.playing;
+			playing = typeof song['@attr'] !== 'undefined' ? true : false ;
 
-		let artistObj = this.props.artists.find( curr => curr.name === artist);
+		let artistObj = this.props.artists.find( curr => curr.name === artist),
+			artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
@@ -22,7 +23,7 @@ class FeaturedSongCard extends Component {
 				    <p className="header">"{song.name}"</p>
 				    <div className="meta">
 				      <span className="date">
-				      	{ playing === 'true' ?
+				      	{ playing === true ?
 				      		'Currently listening':
 				      		date }
 			      	  </span>
@@ -33,14 +34,14 @@ class FeaturedSongCard extends Component {
 					<div className="extra">
 					    <p>
 					      <i className="info icon"></i>
-					      { typeof artistObj !== 'undefined' ? 
+					      { artObjDef ? 
 					      	artistObj.bio.content.slice(0, 300) :
 					      	'Loading...' }
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	{ typeof artistObj !== 'undefined' ? 
-					    		artistObj.tags.tag[0].name :
+					    	{ artObjDef ? 
+					    		artistObj.tags.tag.map(tag => `${tag.name}, `) :
 					    		'Loading...' }
 					    </p>
 					</div>
