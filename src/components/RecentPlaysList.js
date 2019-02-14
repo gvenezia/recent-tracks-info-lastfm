@@ -11,7 +11,6 @@ class RecentPlaysList extends Component {
 	}
 
 	renderList() {
-		// let count = 0;
 		return this.props.songs.map( (song, i) => {
 
 			// Create larger cards for the two most recent tracks

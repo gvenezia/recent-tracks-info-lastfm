@@ -7,6 +7,10 @@ class FeaturedSongCard extends Component {
 		let song = this.props.song,
 			artist = this.props.artist;
 
+		let artistObj = this.props.artists.find( curr => curr.name === artist);
+
+		console.log( this.props.artists );
+
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
 			<div className="ui items segment">
@@ -25,11 +29,15 @@ class FeaturedSongCard extends Component {
 					<div className="extra">
 					    <p>
 					      <i className="info icon"></i>
-					      blah blah
+					      { typeof artistObj !== 'undefined' ? 
+					      	artistObj.bio.content.slice(0, 300) :
+					      	'Loading...' }
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	Genres: TBD	
+					    	{ typeof artistObj !== 'undefined' ? 
+					    		artistObj.tags.tag[0].name :
+					    		'Loading...' }
 					    </p>
 					</div>
 				  </div>
