@@ -5,10 +5,16 @@ import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	await dispatch(fetchSongs());
 
-	const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
-	console.log(artists);
+	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
+	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
 
-	artists.forEach( artist => dispatch(fetchArtist(artist)) );
+	// Alternate chain logic
+	_.chain( getState().songs )
+		.map('artist[#text]')
+		.uniq()
+		.forEach( artist => dispatch(fetchArtist(artist)) )
+		.value();
+	
 }
 
 // Redux-thunk allows a function to be returned instead of an object
@@ -17,8 +23,6 @@ export const fetchSongs = () =>  async dispatch => {
 	const response = await axiosLastfm.get(
 		'?method=user.getrecenttracks&user=grrtano&limit=10' + lastfmKeyAndConfig
 	);
-
-	console.log(response.data);
 
 	dispatch( { 
 		type: 'FETCH_SONGS',
@@ -30,8 +34,6 @@ export const fetchArtist = (artist) =>  async dispatch => {
 	const response = await axiosLastfm.get(
 		`?method=artist.getinfo&artist=${artist}&user=grrtano${lastfmKeyAndConfig}`
 	);
-
-	// console.log(response.data.artist);
 
 	dispatch( { 
 		type: 'FETCH_ARTIST',

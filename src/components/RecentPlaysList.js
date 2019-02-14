@@ -36,7 +36,6 @@ class RecentPlaysList extends Component {
 				    </div>
 				    <ArtistInfo artist={song.artist['#text']}/>
 				  </div>
-				  
 				  <div className="extra content">
 				    <p>
 				      <i className="info icon"></i>
