@@ -27,30 +27,32 @@ class RecentPlaysList extends Component {
 			
 			// The rest of the songs will be displayed four columns wide with less info
 			return (
-				<div key={i} style={{marginTop: '14px'}} className="ui card four wide column">
-				  <div className="image">
-				    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
-				  </div>
-				  <div className="content">
-				    <p className="header">"{song.name}"</p>
-				    <div className="meta">
-				      <span className="date">{song.date['#text']}</span>
-				    </div>
-				    <div className="description">
-				      {song.artist['#text']} — {song.album['#text']}
-				    </div>
-				    <ArtistInfo artist={song.artist['#text']}/>
-				  </div>
-				  <div className="extra content">
-				    <p>
-				      <i className="info icon"></i>
-				      blah blah
-				    </p>
-				    <p>
-				    	<i className="music icon"></i>
-				    	Genres: TBD	
-				    </p>
-				  </div>
+				<div key={i} style={{marginTop: '14px'}} className="four wide column">
+					<div className="ui card">
+					  <div className="image left floated medium">
+					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
+					  </div>
+					  <div className="content">
+					    <p className="header">"{song.name}"</p>
+					    <div className="meta">
+					      <span className="date">{song.date['#text']}</span>
+					    </div>
+					    <div className="description">
+					      {song.artist['#text']} — {song.album['#text']}
+					    </div>
+					    <ArtistInfo artist={song.artist['#text']}/>
+					  </div>
+					  <div className="extra content">
+					    <p>
+					      <i className="info icon"></i>
+					      blah blah
+					    </p>
+					    <p>
+					    	<i className="music icon"></i>
+					    	Genres: TBD	
+					    </p>
+					  </div>
+				    </div>	
 				</div>
 			)
 		});
@@ -58,7 +60,7 @@ class RecentPlaysList extends Component {
 
 	render(){
 		return (
-			<div className='ui grid'>
+			<div className='ui relaxed grid'>
 				{this.renderList()}
 			</div>
 		)
