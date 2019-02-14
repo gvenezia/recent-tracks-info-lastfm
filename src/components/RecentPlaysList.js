@@ -3,7 +3,7 @@ import ArtistInfo from './ArtistInfo';
 import FeaturedSongCard from './FeaturedSongCard';
 
 import { connect } from 'react-redux';
-import { fetchSongs, fetchSongsAndArtists } from '../actions';
+import { fetchSongsAndArtists } from '../actions';
 
 class RecentPlaysList extends Component {
 	componentDidMount() {
@@ -12,6 +12,11 @@ class RecentPlaysList extends Component {
 
 	renderList() {
 		return this.props.songs.map( (song, i) => {
+			let	artist = song.artist['#text'];
+
+			let artistObj = this.props.artists.find( curr => curr.name === artist);
+
+			console.log( this.props.artists );
 
 			// Create larger cards for the two most recent tracks
 			if (i < 2) {
@@ -39,7 +44,7 @@ class RecentPlaysList extends Component {
 					    <div className="description">
 					      {song.artist['#text']} — {song.album['#text']}
 					    </div>
-					    <ArtistInfo artist={song.artist['#text']}/>
+					    <ArtistInfo artist={artist}/>
 					  </div>
 					  <div className="extra content">
 					    <p>
@@ -67,7 +72,10 @@ class RecentPlaysList extends Component {
 }
 
 const mapStateToProps = state => {
-	return { songs: state.songs }
+	return { 
+		songs: state.songs,
+		artists: state.artists
+	 }
 }
 
-export default connect(mapStateToProps, { fetchSongs, fetchSongsAndArtists })(RecentPlaysList);
+export default connect(mapStateToProps, { fetchSongsAndArtists })(RecentPlaysList);

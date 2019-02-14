@@ -15,7 +15,7 @@ class FeaturedSongCard extends Component {
 			<div style={{marginTop: '14px'}} className="eight wide column">
 			<div className="ui items segment">
 				<div className="ui item ">
-				  <div className="image">
+				  <div className="image large">
 				    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 				  </div>
 				  <div className="content">
@@ -49,7 +49,7 @@ class FeaturedSongCard extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return { artists: state.artists }
 }
 

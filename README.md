@@ -1,3 +1,47 @@
+# What Have You Been Listening to?
+This app uses the Last.fm API to fetch your most recently played music and provides additional information about the artist with links.
+
+### User Stories
+- View my (Gaetano's) recent listening history
+- View the song, date and time of listen, album, album art, artist, basic bio, artist genres
+- Last.fm users can pull up their recent listening data from last.fm 
+- Guests can choose from a pre-defined list of usernames
+
+### To-Do
+UI elements:
+- Ability to change the view from expanded to collapsed 
+- Add user input for username, number of recent songs, etc.
+- Add links for all relevant info
+- Collapsed/Consolidated cards for repeated artists or albums
+
+Data Viz:
+- Visualize the trend of listening over time 
+- Provide small pop up visualizations for each song card (ex. how much have you listened to this artist recently? or, How are they trending among all listeners?)
+
+API: 
+- Add integration with musicbrainz, allmusic, and other music info databases in order to enrich the info per song/artist (ex. personnel, producers, artist's country)
+
+Testing:
+- Smoke tests with Jest
+
+### Tech used
+* React
+* JSX
+* Redux
+* React-redux
+* Redux-thunk
+* [axios](https://www.npmjs.com/package/axios)
+* [Last.fm API](https://www.last.fm/api/intro)
+* hidden `.js` file in `src/apiKeys/` for the Last.fm API key and secret
+* ~smoke tests for components~ (in progress)
+* bootstrapped with [Create React App](https://github.com/facebook/create-react-app) -  See below for relevant scripts
+
+#### [Last.fm API Terms of Service](https://www.last.fm/api/tos)
+
+
+
+---  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
