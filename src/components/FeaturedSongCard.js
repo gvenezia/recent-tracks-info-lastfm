@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 import { connect } from 'react-redux';
 
@@ -11,6 +12,8 @@ class FeaturedSongCard extends Component {
 
 		let artistObj = this.props.artists.find( curr => curr.name === artist),
 			artObjDef = typeof artistObj !== 'undefined' ? true : false;
+
+		console.log( artObjDef && artistObj.bio.content.length);
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
@@ -35,12 +38,19 @@ class FeaturedSongCard extends Component {
 						    <p>
 						      <i className="info icon"></i>
 						      { artObjDef && 
-						      	artistObj.bio.content.slice(0, 300) + '...' }
+						      	(artistObj.bio.content.length < 1 ?
+						      		'N/A' : 
+						      		artistObj.bio.content.length < 300 ?
+						      			ReactHtmlParser(artistObj.bio.content) :
+						      			ReactHtmlParser(artistObj.bio.content.slice(0, 300) + '...')) }
 						    </p>
 						    <p>
 						    	<i className="music icon"></i>
 						    	{ artObjDef &&
-						    		artistObj.tags.tag.map(tag => `${tag.name}, `) }
+						    		(artistObj.tags.tag.length < 1 ?
+						    			'N/A' :
+						    			artistObj.tags.tag.map(tag => `${tag.name}, `)
+						    			)}
 						    </p>
 						</div>
 					  </div>
