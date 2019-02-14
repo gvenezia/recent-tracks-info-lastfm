@@ -4,8 +4,8 @@ This app uses the Last.fm API to fetch your most recently played music and provi
 ### User Stories
 - View my (Gaetano's) recent listening history
 - View the song, date and time of listen, album, album art, artist, basic bio, artist genres
-- Last.fm users can pull up their recent listening data from last.fm 
-- Guests can choose from a pre-defined list of usernames
+- ~Last.fm users can pull up their recent listening data from last.fm~ (in progress)
+- ~Guests can choose from a pre-defined list of usernames~ (in progress)
 
 ### To-Do
 UI elements:
@@ -26,12 +26,12 @@ Testing:
 
 ### Tech used
 * React
-* JSX
 * Redux
 * React-redux
 * Redux-thunk
 * [axios](https://www.npmjs.com/package/axios)
 * [Last.fm API](https://www.last.fm/api/intro)
+* [Semantic UI](https://semantic-ui.com/)
 * hidden `.js` file in `src/apiKeys/` for the Last.fm API key and secret
 * ~smoke tests for components~ (in progress)
 * bootstrapped with [Create React App](https://github.com/facebook/create-react-app) -  See below for relevant scripts
