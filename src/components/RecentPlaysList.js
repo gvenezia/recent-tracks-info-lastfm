@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import ArtistInfo from './ArtistInfo';
 
 import { connect } from 'react-redux';
-import { fetchSongs } from '../actions';
+import { fetchSongs, fetchSongsAndArtists } from '../actions';
 // import { fetchArtist } from '../actions';
-
-
 
 class RecentPlaysList extends Component {
 	componentDidMount() {
-		this.props.fetchSongs();
+		this.props.fetchSongsAndArtists();
 	}
 
 	renderList() {
@@ -36,8 +34,9 @@ class RecentPlaysList extends Component {
 				    <div className="description">
 				      {song.artist['#text']} — {song.album['#text']}
 				    </div>
+				    <ArtistInfo artist={song.artist['#text']}/>
 				  </div>
-				  <ArtistInfo artist={song.artist['#text']}/>
+				  
 				  <div className="extra content">
 				    <p>
 				      <i className="info icon"></i>
@@ -66,4 +65,4 @@ const mapStateToProps = state => {
 	return { songs: state.songs }
 }
 
-export default connect(mapStateToProps, { fetchSongs })(RecentPlaysList);
+export default connect(mapStateToProps, { fetchSongs, fetchSongsAndArtists })(RecentPlaysList);

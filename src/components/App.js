@@ -2,6 +2,7 @@ import React from 'react';
 import RecentPlaysList from './RecentPlaysList';
 
 const App = () => {
+	console.clear()
 	return (
 		<div className="ui container">
 			<h1>What Have You Been Listening to?</h1>

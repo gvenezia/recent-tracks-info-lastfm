@@ -4,5 +4,5 @@ import artistReducer from './artistReducer';
 
 export default combineReducers({
 	songs: songsReducer,
-	artist: artistReducer
+	artists: artistReducer
 });
