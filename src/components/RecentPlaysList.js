@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ArtistInfo from './ArtistInfo';
+import FeaturedSongCard from './FeaturedSongCard';
 
 import { connect } from 'react-redux';
 import { fetchSongs, fetchSongsAndArtists } from '../actions';
-// import { fetchArtist } from '../actions';
 
 class RecentPlaysList extends Component {
 	componentDidMount() {
@@ -13,14 +13,19 @@ class RecentPlaysList extends Component {
 	renderList() {
 		// let count = 0;
 		return this.props.songs.map( (song, i) => {
-			
 
-			// setTimeout( () => {
-			// 	console.log(count);
-			// 	this.props.fetchArtist(song.artist['#text'])
-			// }, 3000 + (i * 3000))
+			// Create larger cards for the two most recent tracks
+			if (i < 2) {
+				return (
+					<FeaturedSongCard 
+						key={i} 
+						song={song} 
+						artist={song.artist['#text']}
+					/>
+				)	
+			}
 			
-
+			// The rest of the songs will be displayed four columns wide with less info
 			return (
 				<div key={i} style={{marginTop: '14px'}} className="ui card four wide column">
 				  <div className="image">
