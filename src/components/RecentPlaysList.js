@@ -12,7 +12,7 @@ class RecentPlaysList extends Component {
 
 	renderList() {
 		// Helper function to test whether a property exists
-		const exists = prop => typeof prop !== 'undefined';
+		const exists = x => typeof x !== 'undefined';
 
 		return this.props.songs.map( (song, i) => {
 			let	name = exists(song.name) ? song.name : 'N/A',
@@ -38,32 +38,32 @@ class RecentPlaysList extends Component {
 			return (
 				<div key={i} style={{marginTop: '14px'}} className="four wide column">
 					<div className="ui card">
-					  <div className="image left">
-					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
-					  </div>
-					  <div className="content">
-					    <p className="header">"{name}"</p>
-					    <div className="meta">
-					      <span className="date">{ date }</span>
-					    </div>
-					    <div className="description">
-					      {artist} — {album}
-					    </div>
-					  </div>
-					  <div className="extra content">
-					    <p>
-					      <i className="info icon"></i>
-					      { typeof artistObj !== 'undefined' ? 
-					      	artistObj.bio.content.slice(0, 300) :
-					      	'Loading...' }
-					    </p>
-					    <p>
-					    	<i className="music icon"></i>
-					    	{ typeof artistObj !== 'undefined' ? 
-					    		artistObj.tags.tag[0].name :
-					    		'Loading...' }
-					    </p>
-					  </div>
+						<div className="image left">
+							<img src={song.image[3] ? song.image[3]['#text'] : ''} />
+						</div>
+						<div className="content">
+							<p className="header">"{name}"</p>
+							<div className="meta">
+							<span className="date">{ date }</span>
+							</div>
+							<div className="description">
+							{artist} — {album}
+							</div>
+						</div>
+						<div className="extra content">
+							<p>
+							<i className="info icon"></i>
+							{ exists(artistObj) ? 
+								artistObj.bio.content.slice(0, 100) + '...' :
+								'Loading...' }
+							</p>
+							<p>
+								<i className="music icon"></i>
+								{ exists(artistObj) ? 
+									artistObj.tags.tag.map(tag => `${tag.name}, `) :
+									'Loading...' }
+							</p>
+						</div>
 				    </div>	
 				</div>
 			)

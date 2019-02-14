@@ -21,7 +21,7 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	// Within the function, we then dispatch the object manually
 export const fetchSongs = () =>  async dispatch => {
 	const response = await axiosLastfm.get(
-		'?method=user.getrecenttracks&user=grrtano&limit=10' + lastfmKeyAndConfig
+		'?method=user.getrecenttracks&user=grrtano&limit=89' + lastfmKeyAndConfig
 	);
 
 	dispatch( { 
