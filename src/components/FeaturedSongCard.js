@@ -9,7 +9,8 @@ class FeaturedSongCard extends Component {
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
-				<div className="ui card ">
+			<div className="ui items segment">
+				<div className="ui item ">
 				  <div className="image">
 				    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 				  </div>
@@ -21,18 +22,19 @@ class FeaturedSongCard extends Component {
 				    <div className="description">
 				      {song.artist['#text']} — {song.album['#text']}
 				    </div>
-				  </div>
-				  <div className="extra content">
-				    <p>
-				      <i className="info icon"></i>
-				      blah blah
-				    </p>
-				    <p>
-				    	<i className="music icon"></i>
-				    	Genres: TBD	
-				    </p>
+					<div className="extra">
+					    <p>
+					      <i className="info icon"></i>
+					      blah blah
+					    </p>
+					    <p>
+					    	<i className="music icon"></i>
+					    	Genres: TBD	
+					    </p>
+					</div>
 				  </div>
 				</div>
+			</div>
 			</div>
 		)
 	}
