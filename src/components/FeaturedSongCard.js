@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 class FeaturedSongCard extends Component {
 	render() {
 		let song = this.props.song,
-			artist = this.props.artist;
+			artist = this.props.artist,
+			date = this.props.date,
+			playing = this.props.playing;
 
 		let artistObj = this.props.artists.find( curr => curr.name === artist);
-
-		console.log( this.props.artists );
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
@@ -21,10 +21,14 @@ class FeaturedSongCard extends Component {
 				  <div className="content">
 				    <p className="header">"{song.name}"</p>
 				    <div className="meta">
-				      <span className="date">{song.date['#text']}</span>
+				      <span className="date">
+				      	{ playing === 'true' ?
+				      		'Currently listening':
+				      		date }
+			      	  </span>
 				    </div>
 				    <div className="description">
-				      {song.artist['#text']} — {song.album['#text']}
+				      {artist} — {song.album['#text']}
 				    </div>
 					<div className="extra">
 					    <p>

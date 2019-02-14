@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArtistInfo from './ArtistInfo';
+// import ArtistInfo from './ArtistInfo';
 import FeaturedSongCard from './FeaturedSongCard';
 
 import { connect } from 'react-redux';
@@ -12,11 +12,15 @@ class RecentPlaysList extends Component {
 
 	renderList() {
 		return this.props.songs.map( (song, i) => {
-			let	artist = song.artist['#text'];
+			let	name = typeof song.name !== 'undefined' ? song.name : 'N/A',
+				artist = typeof song.artist['#text'] !== 'undefined' ? song.artist['#text'] : 'N/A',
+				album = typeof song.album['#text'] !== 'undefined' ? song.album['#text'] : 'N/A',
+				date = typeof song.date !== 'undefined' ? song.date['#text'] : 'N/A',
+				playing = typeof song['@attr'] !== 'undefined' ? true : false ;
 
 			let artistObj = this.props.artists.find( curr => curr.name === artist);
 
-			console.log( this.props.artists );
+			console.log(  );
 
 			// Create larger cards for the two most recent tracks
 			if (i < 2) {
@@ -24,7 +28,9 @@ class RecentPlaysList extends Component {
 					<FeaturedSongCard 
 						key={i} 
 						song={song} 
-						artist={song.artist['#text']}
+						artist={artist}
+						date={date}
+						playing={playing}
 					/>
 				)	
 			}
@@ -37,23 +43,30 @@ class RecentPlaysList extends Component {
 					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 					  </div>
 					  <div className="content">
-					    <p className="header">"{song.name}"</p>
+					    <p className="header">"{name}"</p>
 					    <div className="meta">
-					      <span className="date">{song.date['#text']}</span>
+					      <span className="date">
+					      	{ playing === true ?
+					      		'Currently listening':
+					      		date }
+					      </span>
 					    </div>
 					    <div className="description">
-					      {song.artist['#text']} — {song.album['#text']}
+					      {artist} — {album}
 					    </div>
-					    <ArtistInfo artist={artist}/>
 					  </div>
 					  <div className="extra content">
 					    <p>
 					      <i className="info icon"></i>
-					      blah blah
+					      { typeof artistObj !== 'undefined' ? 
+					      	artistObj.bio.content.slice(0, 300) :
+					      	'Loading...' }
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	Genres: TBD	
+					    	{ typeof artistObj !== 'undefined' ? 
+					    		artistObj.tags.tag[0].name :
+					    		'Loading...' }
 					    </p>
 					  </div>
 				    </div>	
