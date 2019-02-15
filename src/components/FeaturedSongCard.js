@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 class FeaturedSongCard extends Component {
 	render() {
 		let song = this.props.song,
-			artist = this.props.artist,
-			date = this.props.date,
-			playing = typeof song['@attr'] !== 'undefined' ? true : false ;
+				artist = this.props.artist,
+				date = this.props.date,
+				playing = typeof song['@attr'] !== 'undefined' ? true : false ;
 
 		let artistObj = this.props.artists.find( curr => curr.name === artist),
-			artObjDef = typeof artistObj !== 'undefined' ? true : false;
+				artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
 		console.log( artObjDef && artistObj.bio.content.length);
 
@@ -34,24 +33,24 @@ class FeaturedSongCard extends Component {
 					    <div className="description">
 					      {artist} — {song.album['#text']}
 					    </div>
-						<div className="extra">
-					    <p>
-					      <i className="info icon"></i>
-					      { artObjDef && 
-					      	(artistObj.bio.content.length < 1 ?
-					      		'N/A' : 
-					      		artistObj.bio.content.length < 300 ?
-					      			ReactHtmlParser(artistObj.bio.content) :
-					      			ReactHtmlParser(artistObj.bio.content.slice(0, 300) + '...')) }
-					    </p>
-					    <p>
-					    	<i className="music icon"></i>
-					    	{ artObjDef &&
-					    		(artistObj.tags.tag.length < 1 ?
-					    			'N/A' :
-					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
-					    </p>
-						</div>
+							<div className="extra">
+						    <p>
+						      <i className="info icon"></i>
+						      { artObjDef && 
+						      	(artistObj.bio.content.length < 1 ?
+						      		'N/A' : 
+						      		artistObj.bio.content.length <= 375 ?
+						      			ReactHtmlParser(artistObj.bio.content) :
+						      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
+						    </p>
+						    <p>
+						    	<i className="music icon"></i>
+						    	{ artObjDef &&
+						    		(artistObj.tags.tag.length < 1 ?
+						    			'N/A' :
+						    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
+						    </p>
+							</div>
 					  </div>
 					</div>
 				</div>

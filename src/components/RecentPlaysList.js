@@ -14,11 +14,12 @@ class RecentPlaysList extends Component {
 		// Helper function to test whether a property exists
 		const exists = x => typeof x !== 'undefined';
 
+		// Map over all songs, checking for properties then returning JSX for each song
 		return this.props.songs.map( (song, i) => {
 			let name = exists(song.name) ? song.name : 'N/A',
-				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
-				album = exists(song.album) ? song.album['#text'] : 'N/A',
-				date = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
+					artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
+					album = exists(song.album) ? song.album['#text'] : 'N/A',
+					date = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			let artistObj = this.props.artists.find( curr => curr.name === artist);
 
@@ -44,18 +45,18 @@ class RecentPlaysList extends Component {
 						<div className="content">
 							<p className="header">"{name}"</p>
 							<div className="meta">
-							<span className="date">{ date }</span>
+								<span className="date">{ date }</span>
 							</div>
 							<div className="description">
-							{artist} — {album}
+								{artist} — {album}
 							</div>
 						</div>
 						<div className="extra content">
 							<p>
-							<i className="info icon"></i>
-							{ exists(artistObj) ? 
-								artistObj.bio.content.slice(0, 100) + '...' :
-								'Loading...' }
+								<i className="info icon"></i>
+								{ exists(artistObj) ? 
+									artistObj.bio.content.slice(0, 100) + '...' :
+									'Loading...' }
 							</p>
 							<p>
 								<i className="music icon"></i>
