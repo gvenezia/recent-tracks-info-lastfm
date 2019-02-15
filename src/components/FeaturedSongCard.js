@@ -12,8 +12,6 @@ class FeaturedSongCard extends Component {
 		let artistObj = this.props.artists.find( curr => curr.name === artist),
 				artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
-		console.log( artObjDef && artistObj.bio.content.length);
-
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
 				<div className="ui items segment">

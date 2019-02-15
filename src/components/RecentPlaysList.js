@@ -8,6 +8,15 @@ import { fetchSongsAndArtists } from '../actions';
 class RecentPlaysList extends Component {
 	componentDidMount() {
 		this.props.fetchSongsAndArtists();
+
+		this.checkAPI();
+	}
+
+	checkAPI(){
+		setInterval( () =>{
+			console.log('Checking API');
+			this.props.fetchSongsAndArtists()
+		}, 5000)
 	}
 
 	renderList() {
