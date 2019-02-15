@@ -1,5 +1,5 @@
 # What Have You Been Listening to?
-This app uses the Last.fm API to fetch your most recently played music and display them as a list of cards. Each card contains extra information, like artist bio and genre tags, that you'd otherwise have to search for.
+This app uses the Last.fm API to fetch your most recently played songs and display them as a list of cards. Each card contains extra information, like artist bio and genre tags, that you'd otherwise have to search for.
 
 ### User Stories
 - View my (Gaetano's) recent listening history

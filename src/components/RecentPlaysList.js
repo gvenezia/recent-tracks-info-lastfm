@@ -39,8 +39,11 @@ class RecentPlaysList extends Component {
 			return (
 				<div key={i} style={{marginTop: '14px'}} className="four wide column">
 					<div className="ui card">
-						<div className="image left">
-							<img src={song.image[3] ? song.image[3]['#text'] : ''} />
+						<div className="image">
+							<img src={ song.image[3] ?
+					    						 song.image[3]['#text'] :
+					    						 'https://semantic-ui.com/images/wireframe/image.png'}
+						  />
 						</div>
 						<div className="content">
 							<p className="header">"{name}"</p>
@@ -65,7 +68,7 @@ class RecentPlaysList extends Component {
 									'Loading...' }
 							</p>
 						</div>
-				    </div>	
+			    </div>	
 				</div>
 			)
 		}); 
@@ -75,7 +78,18 @@ class RecentPlaysList extends Component {
 		return (
 			<div className='ui relaxed grid'>
 				{this.renderList()}
-			</div>
+
+{/*}				<div className="four wide column">
+					<div className="ui card">
+					  <div className="image">
+					    <img src="https://semantic-ui.com/images/wireframe/image.png" />
+					  </div>
+					  <div className="content">
+					    <p className="header">Load More</p>
+					  </div>
+					</div>
+				</div>	*/}
+			</div> 
 		)
 	}
 }

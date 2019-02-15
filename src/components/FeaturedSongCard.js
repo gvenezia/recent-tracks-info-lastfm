@@ -19,7 +19,10 @@ class FeaturedSongCard extends Component {
 				<div className="ui items segment">
 					<div className="ui item ">
 					  <div style={{'width': '250px'}} className="image">
-					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
+					    <img src={ song.image[3] ?
+					    						 song.image[3]['#text'] :
+					    						 'https://semantic-ui.com/images/wireframe/image.png'}
+						  />
 					  </div>
 					  <div className="content">
 					    <p className="header">"{song.name}"</p>
@@ -33,24 +36,24 @@ class FeaturedSongCard extends Component {
 					    <div className="description">
 					      {artist} — {song.album['#text']}
 					    </div>
-							<div className="extra">
-						    <p>
-						      <i className="info icon"></i>
-						      { artObjDef && 
-						      	(artistObj.bio.content.length < 1 ?
-						      		'N/A' : 
-						      		artistObj.bio.content.length <= 375 ?
-						      			ReactHtmlParser(artistObj.bio.content) :
-						      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
-						    </p>
-						    <p>
-						    	<i className="music icon"></i>
-						    	{ artObjDef &&
-						    		(artistObj.tags.tag.length < 1 ?
-						    			'N/A' :
-						    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
-						    </p>
-							</div>
+						<div className="extra">
+					    <p>
+					      <i className="info icon"></i>
+					      { artObjDef && 
+					      	(artistObj.bio.content.length < 1 ?
+					      		'N/A' : 
+					      		artistObj.bio.content.length <= 375 ?
+					      			ReactHtmlParser(artistObj.bio.content) :
+					      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
+					    </p>
+					    <p>
+					    	<i className="music icon"></i>
+					    	{ artObjDef &&
+					    		(artistObj.tags.tag.length < 1 ?
+					    			'N/A' :
+					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
+					    </p>
+						</div>
 					  </div>
 					</div>
 				</div>

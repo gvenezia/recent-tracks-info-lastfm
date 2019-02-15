@@ -17,11 +17,9 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	
 }
 
-// Redux-thunk allows a function to be returned instead of an object
-	// Within the function, we then dispatch the object manually
 export const fetchSongs = () =>  async dispatch => {
 	const response = await axiosLastfm.get(
-		'?method=user.getrecenttracks&user=grrtano&limit=89' + lastfmKeyAndConfig
+		'?method=user.getrecenttracks&user=grrtano&limit=17' + lastfmKeyAndConfig
 	);
 
 	dispatch( { 
@@ -31,8 +29,11 @@ export const fetchSongs = () =>  async dispatch => {
 };
 
 export const fetchArtist = (artist) =>  async dispatch => {
+	// Encode properly so special characters like & and / don't break the API request
+	let URIEncodedArtist = encodeURIComponent(artist);
+
 	const response = await axiosLastfm.get(
-		`?method=artist.getinfo&artist=${artist}&user=grrtano${lastfmKeyAndConfig}`
+		`?method=artist.getinfo&artist=${URIEncodedArtist}&user=grrtano${lastfmKeyAndConfig}`
 	);
 
 	dispatch( { 
