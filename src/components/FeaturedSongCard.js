@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class FeaturedSongCard extends Component {
 	render() {
@@ -35,23 +35,22 @@ class FeaturedSongCard extends Component {
 					      {artist} — {song.album['#text']}
 					    </div>
 						<div className="extra">
-						    <p>
-						      <i className="info icon"></i>
-						      { artObjDef && 
-						      	(artistObj.bio.content.length < 1 ?
-						      		'N/A' : 
-						      		artistObj.bio.content.length < 300 ?
-						      			ReactHtmlParser(artistObj.bio.content) :
-						      			ReactHtmlParser(artistObj.bio.content.slice(0, 300) + '...')) }
-						    </p>
-						    <p>
-						    	<i className="music icon"></i>
-						    	{ artObjDef &&
-						    		(artistObj.tags.tag.length < 1 ?
-						    			'N/A' :
-						    			artistObj.tags.tag.map(tag => `${tag.name}, `)
-						    			)}
-						    </p>
+					    <p>
+					      <i className="info icon"></i>
+					      { artObjDef && 
+					      	(artistObj.bio.content.length < 1 ?
+					      		'N/A' : 
+					      		artistObj.bio.content.length < 300 ?
+					      			ReactHtmlParser(artistObj.bio.content) :
+					      			ReactHtmlParser(artistObj.bio.content.slice(0, 300) + '...')) }
+					    </p>
+					    <p>
+					    	<i className="music icon"></i>
+					    	{ artObjDef &&
+					    		(artistObj.tags.tag.length < 1 ?
+					    			'N/A' :
+					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
+					    </p>
 						</div>
 					  </div>
 					</div>

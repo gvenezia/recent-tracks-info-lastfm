@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import ArtistInfo from './ArtistInfo';
-import FeaturedSongCard from './FeaturedSongCard';
-
 import { connect } from 'react-redux';
+import moment from 'moment';
+
+import FeaturedSongCard from './FeaturedSongCard';
 import { fetchSongsAndArtists } from '../actions';
 
 class RecentPlaysList extends Component {
@@ -15,10 +15,10 @@ class RecentPlaysList extends Component {
 		const exists = x => typeof x !== 'undefined';
 
 		return this.props.songs.map( (song, i) => {
-			let	name = exists(song.name) ? song.name : 'N/A',
+			let name = exists(song.name) ? song.name : 'N/A',
 				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
 				album = exists(song.album) ? song.album['#text'] : 'N/A',
-				date = exists(song.date) ? song.date['#text'] : 'N/A';
+				date = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			let artistObj = this.props.artists.find( curr => curr.name === artist);
 
