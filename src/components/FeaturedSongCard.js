@@ -19,7 +19,7 @@ class FeaturedSongCard extends Component {
 			<div style={{marginTop: '14px'}} className="eight wide column">
 				<div className="ui items segment">
 					<div className="ui item ">
-					  <div className="image large">
+					  <div style={{'width': '250px'}} className="image">
 					    <img src={song.image[3] ? song.image[3]['#text'] : ''} />
 					  </div>
 					  <div className="content">
