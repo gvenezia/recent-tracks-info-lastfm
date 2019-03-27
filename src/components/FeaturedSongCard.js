@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
 
 class FeaturedSongCard extends Component {
 	render() {
-		let song = this.props.song,
-				artist = this.props.artist,
-				date = this.props.date,
-				playing = typeof song['@attr'] !== 'undefined' ? true : false ;
-
-		let artistObj = this.props.artists.find( curr => curr.name === artist),
+		// Destructure props variables
+		let { song, artist, artists, date } = this.props;
+				
+		// Find calculated variables
+		let playing = typeof song['@attr'] !== 'undefined' ? true : false ,
+				artistObj = artists.find( curr => curr.name === artist),
 				artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
 		return (
@@ -36,13 +37,16 @@ class FeaturedSongCard extends Component {
 					    </div>
 						<div className="extra">
 					    <p>
-					      <i className="info icon"></i>
+					      <i className="info icon" data-tip="React-tooltip"></i>
 					      { artObjDef && 
 					      	(artistObj.bio.content.length < 1 ?
 					      		'N/A' : 
 					      		artistObj.bio.content.length <= 375 ?
 					      			ReactHtmlParser(artistObj.bio.content) :
 					      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
+					      	<ReactTooltip place="bottom" type="dark" effect="float">
+					      		Info about the artist
+					      	</ReactTooltip>
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>

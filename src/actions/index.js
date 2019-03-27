@@ -2,8 +2,15 @@ import _ from 'lodash';
 import axiosLastfm from '../apis/lastfm.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
+export const setUser = (user) => dispatch => {
+	dispatch( { 
+		type: 'SET_USER',
+		payload: user
+	});
+};
+
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
-	await dispatch(fetchSongs());
+	await dispatch(fetchSongs(getState().user));
 
 	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
 	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
@@ -17,9 +24,11 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	
 }
 
-export const fetchSongs = () =>  async dispatch => {
+export const fetchSongs = (user) => async dispatch => {
+	let URIEncodedUser = encodeURIComponent(user);
+
 	const response = await axiosLastfm.get(
-		'?method=user.getrecenttracks&user=grrtano&limit=17' + lastfmKeyAndConfig
+		`?method=user.getrecenttracks&user=${URIEncodedUser}&limit=17${lastfmKeyAndConfig}`
 	);
 
 	dispatch( { 
@@ -28,7 +37,7 @@ export const fetchSongs = () =>  async dispatch => {
 	});
 };
 
-export const fetchArtist = (artist) =>  async dispatch => {
+export const fetchArtist = (artist) => async dispatch => {
 	// Encode properly so special characters like & and / don't break the API request
 	let URIEncodedArtist = encodeURIComponent(artist);
 
