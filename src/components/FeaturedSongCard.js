@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
+
+// Currently does nothing
 import ReactTooltip from 'react-tooltip';
 
 class FeaturedSongCard extends Component {
@@ -44,10 +46,11 @@ class FeaturedSongCard extends Component {
 					      		artistObj.bio.content.length <= 375 ?
 					      			ReactHtmlParser(artistObj.bio.content) :
 					      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
-					      	<ReactTooltip place="bottom" type="dark" effect="float">
+					      	
+					    </p>
+					    <ReactTooltip place="bottom" type="dark" effect="float">
 					      		Info about the artist
 					      	</ReactTooltip>
-					    </p>
 					    <p>
 					    	<i className="music icon"></i>
 					    	{ artObjDef &&

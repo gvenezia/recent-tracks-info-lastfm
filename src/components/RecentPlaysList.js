@@ -42,6 +42,7 @@ class RecentPlaysList extends Component {
 						song={song} 
 						artist={artist}
 						date={date}
+						key={i}
 					/>
 				)	
 			}

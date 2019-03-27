@@ -2,7 +2,7 @@ import _ from 'lodash';
 import axiosLastfm from '../apis/lastfm.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
-export const setUser = (user) => dispatch => {
+export const setUser = (user = 'grrtano') => dispatch => {
 	dispatch( { 
 		type: 'SET_USER',
 		payload: user
@@ -24,7 +24,7 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	
 }
 
-export const fetchSongs = (user) => async dispatch => {
+export const fetchSongs = (user = 'grrtano') => async dispatch => {
 	let URIEncodedUser = encodeURIComponent(user);
 
 	const response = await axiosLastfm.get(
@@ -37,7 +37,7 @@ export const fetchSongs = (user) => async dispatch => {
 	});
 };
 
-export const fetchArtist = (artist) => async dispatch => {
+export const fetchArtist = (artist = '') => async dispatch => {
 	// Encode properly so special characters like & and / don't break the API request
 	let URIEncodedArtist = encodeURIComponent(artist);
 
