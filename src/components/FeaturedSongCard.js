@@ -12,8 +12,8 @@ class FeaturedSongCard extends Component {
 				
 		// Find calculated variables
 		let playing = typeof song['@attr'] !== 'undefined' ? true : false ,
-				artistObj = artists.find( curr => curr.name === artist),
-				artObjDef = typeof artistObj !== 'undefined' ? true : false;
+			artistObj = artists.find( curr => curr.name === artist),
+			artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">

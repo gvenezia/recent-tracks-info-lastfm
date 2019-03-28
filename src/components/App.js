@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import RecentPlaysList from './RecentPlaysList';
 import { connect } from 'react-redux';
 
+import { setUser } from '../actions';
+
 class App extends Component {
-	state
 	
 	render(){
 		console.clear()
@@ -25,4 +26,8 @@ class App extends Component {
 	}	
 }
 
-export default connect()(App);
+const mapStateToProps = state => {
+	return { user: state.user }
+}
+
+export default connect(mapStateToProps, { setUser })(App);

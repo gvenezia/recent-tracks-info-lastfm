@@ -15,7 +15,7 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
 	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
 
-	// Alternate chain logic
+	// Alternate functional programming/chain logic
 	_.chain( getState().songs )
 		.map('artist[#text]')
 		.uniq()
