@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RecentPlaysList from './RecentPlaysList';
 import { connect } from 'react-redux';
 
-import { setUser } from '../actions';
+import { setUser, fetchCredits } from '../actions';
 
 class App extends Component {
 	
@@ -17,7 +17,8 @@ class App extends Component {
 					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;<input 
 								type="text"
-								placeholder="_______________" />
+								placeholder="_______________"
+                onSubmit={this.props.fetchCredits("3 Pieces for String Quartet: No. 1")} />
 					</span>&nbsp; Been Listening to?
 		 		</h1>
 				<RecentPlaysList />
@@ -27,7 +28,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-	return { user: state.user }
+	return { 
+    user: state.user,
+    credits: state.credits
+  }
 }
 
-export default connect(mapStateToProps, { setUser })(App);
+export default connect(mapStateToProps, { setUser, fetchCredits })(App);

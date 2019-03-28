@@ -14,7 +14,7 @@ class RecentPlaysList extends Component {
 
 	checkAPI(){
 		setInterval( () =>{
-			console.log('Checking API');
+			console.log('Checking for Last.fm updates');
 			this.props.fetchSongsAndArtists()
 		}, 5000)
 	}

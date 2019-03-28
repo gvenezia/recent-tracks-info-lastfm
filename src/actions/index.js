@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import axiosLastfm from '../apis/lastfm.js';
+import disconnectDiscogs from '../apis/disconnectDiscogs.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
 export const setUser = (user = 'grrtano') => dispatch => {
@@ -50,3 +51,21 @@ export const fetchArtist = (artist = '') => async dispatch => {
 		payload: response.data.artist
 	});
 };
+
+export const fetchCredits = (song = '', artist = '', album = '') => async dispatch => {
+	var Discogs = require('disconnect').Client;
+	
+	var db = new Discogs().database();
+	db.getRelease(176126, function(err, data){
+		console.log(data);
+	});
+
+	// const response = await disconnectDiscogs.search(`${song}`, {page: 2, per_page: 75}, (err, data) => {
+	// 	console.log(data);
+	// });
+
+	// dispatch( {
+	// 	type: 'FETCH_CREDITS',
+	// 	payload: response.data.credits
+	// })
+}
