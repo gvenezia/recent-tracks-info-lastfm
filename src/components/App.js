@@ -5,6 +5,15 @@ import { connect } from 'react-redux';
 import { setUser, fetchCredits } from '../actions';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.setUser()
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.setUser();
+  }
 	
 	render(){
 		console.clear()
@@ -15,10 +24,16 @@ class App extends Component {
 				<h1>
 					What Has 
 					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
-						&nbsp;<input 
+						&nbsp;
+            <form 
+              class="ui form" 
+              onSubmit={this.handleSubmit} 
+            >
+              <input 
 								type="text"
 								placeholder="_______________"
-                onSubmit={this.props.fetchCredits("3 Pieces for String Quartet: No. 1")} />
+              />
+            </form>
 					</span>&nbsp; Been Listening to?
 		 		</h1>
 				<RecentPlaysList />

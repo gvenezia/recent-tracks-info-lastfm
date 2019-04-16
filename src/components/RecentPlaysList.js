@@ -109,7 +109,8 @@ class RecentPlaysList extends Component {
 const mapStateToProps = state => {
 	return { 
 		songs: state.songs,
-		artists: state.artists
+		artists: state.artists,
+		user: state.user
 	 }
 }
 

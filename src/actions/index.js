@@ -14,7 +14,14 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	await dispatch(fetchSongs(getState().user));
 
 	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
+	// const songs = _.uniq(_.map( getState().songs, 'name' ));
+
+	// console.log(artists);
+
 	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
+	// songs.forEach( song => dispatch(fetchCredit(song)) );
+
+	// dispatch(fetchCredits(song, artist))
 
 	// Alternate functional programming/chain logic
 	_.chain( getState().songs )
@@ -52,20 +59,21 @@ export const fetchArtist = (artist = '') => async dispatch => {
 	});
 };
 
-export const fetchCredits = (song = '', artist = '', album = '') => async dispatch => {
+export const fetchCredits = (song = '', artist = '', album = '') => async (dispatch, getState) => {
 	var Discogs = require('disconnect').Client;
-	
+
 	var db = new Discogs().database();
-	db.getRelease(176126, function(err, data){
+	const response = db.getRelease(176126, function(err, data){
 		console.log(data);
+		return data;
 	});
 
 	// const response = await disconnectDiscogs.search(`${song}`, {page: 2, per_page: 75}, (err, data) => {
 	// 	console.log(data);
 	// });
 
-	// dispatch( {
-	// 	type: 'FETCH_CREDITS',
-	// 	payload: response.data.credits
-	// })
+	dispatch( {
+		type: 'FETCH_CREDITS',
+		payload: response
+	})
 }

@@ -20,7 +20,7 @@ class FeaturedSongCard extends Component {
 				<div className="ui items segment">
 					<div className="ui item ">
 					  <div style={{'width': '250px'}} className="image">
-					    <img src={ song.image[3] ?
+					    <img alt="album art" src={ song.image[3]['#text'].length > 0 ?
 					    						 song.image[3]['#text'] :
 					    						 'https://semantic-ui.com/images/wireframe/image.png'}
 						  />
