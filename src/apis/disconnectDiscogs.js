@@ -1,7 +1,11 @@
-const disconnectDiscogs = () => {
-	var Discogs = require('disconnect').Client;
+import disconnect from 'disconnect';
 
-	return new Discogs('WhatIsPlayingLastFM/1.0').database();
+const disconnectDiscogs = () => {
+	var Discogs = disconnect.Client;
+
+	var dis = new Discogs('WhatIsPlayingLastFM/1.0');
+
+	return dis.database();
 }
 
 export default disconnectDiscogs;

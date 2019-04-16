@@ -11,7 +11,7 @@ export const setUser = (user = 'grrtano') => dispatch => {
 };
 
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
-	await dispatch(fetchSongs(getState().user));
+	await dispatch(fetchSongs());
 
 	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
 	// const songs = _.uniq(_.map( getState().songs, 'name' ));
@@ -20,8 +20,6 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
 	// songs.forEach( song => dispatch(fetchCredit(song)) );
-
-	// dispatch(fetchCredits(song, artist))
 
 	// Alternate functional programming/chain logic
 	_.chain( getState().songs )
@@ -32,12 +30,14 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	
 }
 
-export const fetchSongs = (user = 'grrtano') => async dispatch => {
-	let URIEncodedUser = encodeURIComponent(user);
+export const fetchSongs = () => async (dispatch, getState) => {
+	let URIEncodedUser = encodeURIComponent(getState().user);
 
 	const response = await axiosLastfm.get(
-		`?method=user.getrecenttracks&user=${URIEncodedUser}&limit=17${lastfmKeyAndConfig}`
+		`?method=user.getrecenttracks&user=${URIEncodedUser}&limit=18${lastfmKeyAndConfig}`
 	);
+
+	console.log(response);
 
 	dispatch( { 
 		type: 'FETCH_SONGS',
@@ -60,6 +60,9 @@ export const fetchArtist = (artist = '') => async dispatch => {
 };
 
 export const fetchCredits = (song = '', artist = '', album = '') => async (dispatch, getState) => {
+	// console.log(disconnectDiscogs, db.getRelease(176126, function(err, data){
+	// 	console.log(data); }) );
+
 	var Discogs = require('disconnect').Client;
 
 	var db = new Discogs().database();

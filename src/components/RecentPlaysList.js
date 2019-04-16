@@ -52,10 +52,12 @@ class RecentPlaysList extends Component {
 				<div key={i} style={{marginTop: '14px'}} className="four wide column">
 					<div className="ui card">
 						<div className="image">
-							<img src={ song.image[3] ?
-					    						 song.image[3]['#text'] :
-					    						 'https://semantic-ui.com/images/wireframe/image.png'}
-						  />
+							<img 
+								alt="album art" 
+								src={ song.image[3]['#text'].length > 0 ?
+			    						 song.image[3]['#text'] :
+			    						 'https://semantic-ui.com/images/wireframe/image.png'}
+							/>
 						</div>
 						<div className="content">
 							<p className="header">"{name}"</p>

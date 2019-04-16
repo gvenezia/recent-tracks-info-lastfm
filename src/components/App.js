@@ -7,7 +7,8 @@ import { setUser, fetchCredits } from '../actions';
 class App extends Component {
 
   componentDidMount() {
-    this.props.setUser()
+    this.props.setUser();
+    this.props.fetchCredits();
   }
 
   handleSubmit(event) {
@@ -30,8 +31,8 @@ class App extends Component {
               onSubmit={this.handleSubmit} 
             >
               <input 
-								type="text"
-								placeholder="_______________"
+				type="text"
+				placeholder="_______________"
               />
             </form>
 					</span>&nbsp; Been Listening to?
