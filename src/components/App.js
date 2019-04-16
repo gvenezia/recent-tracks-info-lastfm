@@ -13,7 +13,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.setUser();
+    // this.props.setUser();
   }
 	
 	render(){
@@ -26,15 +26,15 @@ class App extends Component {
 					What Has 
 					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;
-            <form 
-              class="ui form" 
-              onSubmit={this.handleSubmit} 
-            >
-              <input 
+	          <form 
+	            class="ui form" 
+	            onSubmit={this.handleSubmit} 
+	          >
+	            <input 
 				type="text"
 				placeholder="_______________"
-              />
-            </form>
+	            />
+	          </form>
 					</span>&nbsp; Been Listening to?
 		 		</h1>
 				<RecentPlaysList />

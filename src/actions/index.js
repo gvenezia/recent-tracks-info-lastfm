@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import axiosLastfm from '../apis/lastfm.js';
-import disconnectDiscogs from '../apis/disconnectDiscogs.js';
+// import disconnectDiscogs from '../apis/disconnectDiscogs.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
 export const setUser = (user = 'grrtano') => dispatch => {
@@ -13,20 +13,28 @@ export const setUser = (user = 'grrtano') => dispatch => {
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	await dispatch(fetchSongs());
 
-	// const artists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
-	// const songs = _.uniq(_.map( getState().songs, 'name' ));
+	const fetchedArtists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
+	const stateArtists = _.map(getState().artists, 'name');			
+	const newArtists = fetchedArtists.filter(artist => stateArtists.indexOf(artist) === -1);
 
-	// console.log(artists);
-
-	// artists.forEach( artist => dispatch(fetchArtist(artist)) );
+	if (newArtists.length > 0)
+		newArtists.forEach( artist => dispatch(fetchArtist(artist)) );
+	
 	// songs.forEach( song => dispatch(fetchCredit(song)) );
+	// dispatch( fetchCredits() )
 
 	// Alternate functional programming/chain logic
-	_.chain( getState().songs )
-		.map('artist[#text]')
-		.uniq()
-		.forEach( artist => dispatch(fetchArtist(artist)) )
-		.value();
+	// _.chain( getState().songs )
+	// 	.map('artist[#text]')
+	// 	.uniq()
+	// 	.forEach( artist => dispatch(fetchArtist(artist)) )
+	// 	.value();
+
+	// console.log(
+	// 	_.chain( getState().songs )
+	// 		.map('artist[#text]')
+	// 		.uniq().value()
+	// 	);
 	
 }
 
@@ -60,15 +68,20 @@ export const fetchArtist = (artist = '') => async dispatch => {
 };
 
 export const fetchCredits = (song = '', artist = '', album = '') => async (dispatch, getState) => {
-	// console.log(disconnectDiscogs, db.getRelease(176126, function(err, data){
-	// 	console.log(data); }) );
-
 	var Discogs = require('disconnect').Client;
+	// search?release_title=nevermind&artist=nirvana&per_page=3&page=1
 
-	var db = new Discogs().database();
-	const response = db.getRelease(176126, function(err, data){
+	var db = new Discogs('WhatIsPlayingLastFM/1.0', {userToken: 'DppIYtxGVQlPOvRJacAr'}).database();
+	const response = db.search(
+		'Why Sad Song',
+		{page: 1, per_page: 1},
+		function(err, data){
+			console.log(data);
+			return data;
+	});
+
+	db.getRelease(176126, function(err, data){
 		console.log(data);
-		return data;
 	});
 
 	// const response = await disconnectDiscogs.search(`${song}`, {page: 2, per_page: 75}, (err, data) => {
