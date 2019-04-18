@@ -71,7 +71,12 @@ export const fetchCredits = (song = '', artist = '', album = '') => async (dispa
 	var Discogs = require('disconnect').Client;
 	// search?release_title=nevermind&artist=nirvana&per_page=3&page=1
 
-	var db = new Discogs('WhatIsPlayingLastFM/1.0', {userToken: 'DppIYtxGVQlPOvRJacAr'}).database();
+	var db = new Discogs('WhatIsPlayingLastFM/1.0', 
+		{
+			consumerKey: 'DppIYtxGVQlPOvRJacAr',
+		 	consumerSecret: 'SoHlTcKDWajSgJTcNgWwHxlhlAGLdZPu'
+		 }).database();
+	
 	const response = db.search(
 		'Why Sad Song',
 		{page: 1, per_page: 1},
