@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import axiosLastfm from '../apis/lastfm.js';
-// import disconnectDiscogs from '../apis/disconnectDiscogs.js';
+import disconnect from '../apis/disconnectDiscogs.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
 export const setUser = (user = 'grrtano') => dispatch => {
@@ -68,16 +68,9 @@ export const fetchArtist = (artist = '') => async dispatch => {
 };
 
 export const fetchCredits = (song = '', artist = '', album = '') => async (dispatch, getState) => {
-	var Discogs = require('disconnect').Client;
-	// search?release_title=nevermind&artist=nirvana&per_page=3&page=1
+	console.log(disconnect);
 
-	var db = new Discogs('WhatIsPlayingLastFM/1.0', 
-		{
-			consumerKey: 'DppIYtxGVQlPOvRJacAr',
-		 	consumerSecret: 'SoHlTcKDWajSgJTcNgWwHxlhlAGLdZPu'
-		 }).database();
-	
-	const response = db.search(
+	const response = disconnect.search(
 		'Why Sad Song',
 		{page: 1, per_page: 1},
 		function(err, data){
@@ -85,7 +78,7 @@ export const fetchCredits = (song = '', artist = '', album = '') => async (dispa
 			return data;
 	});
 
-	db.getRelease(176126, function(err, data){
+	disconnect.getRelease(176126, function(err, data){
 		console.log(data);
 	});
 

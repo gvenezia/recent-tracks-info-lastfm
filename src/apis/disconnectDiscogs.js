@@ -1,9 +1,10 @@
-const disconnectDiscogs = () => {
-	var Discogs = require('disconnect').Client;
+var Discogs = require('disconnect').Client;
 
-	return new Discogs('WhatIsPlayingLastFM/1.0').database();
-}
+const disconnect = new Discogs('WhatIsPlayingLastFM/1.0', {
+		consumerKey: 'DppIYtxGVQlPOvRJacAr',
+	 	consumerSecret: 'SoHlTcKDWajSgJTcNgWwHxlhlAGLdZPu'
+	 }).database()
 
-export default disconnectDiscogs;
+export default disconnect;
 
 
