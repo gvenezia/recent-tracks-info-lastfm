@@ -2,23 +2,29 @@ import React, { Component } from 'react';
 import RecentPlaysList from './RecentPlaysList';
 import { connect } from 'react-redux';
 
-import { setUser, fetchCredits } from '../actions';
+import { setUser, fetchSongsAndArtists } from '../actions';
 
 class App extends Component {
 
   componentDidMount() {
     this.props.setUser();
-    this.props.fetchCredits();
+    this.props.fetchSongsAndArtists();
+    this.checkAPI();
   }
 
   handleSubmit(event) {
     event.preventDefault();
     // this.props.setUser();
   }
+
+	checkAPI(){
+		setInterval( () =>{
+			console.log('Checking for Last.fm updates');
+			this.props.fetchSongsAndArtists()
+		}, 5000)
+	}
 	
 	render(){
-		console.clear()
-
 		return (
 			<div className="ui container">
 				
@@ -27,12 +33,12 @@ class App extends Component {
 					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;
 	          <form 
-	            class="ui form" 
+	            className="ui form" 
 	            onSubmit={this.handleSubmit} 
 	          >
 	            <input 
-				type="text"
-				placeholder="_______________"
+								type="text"
+								placeholder="_______________"
 	            />
 	          </form>
 					</span>&nbsp; Been Listening to?
@@ -50,4 +56,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { setUser, fetchCredits })(App);
+export default connect(mapStateToProps, { setUser, fetchSongsAndArtists })(App);

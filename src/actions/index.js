@@ -3,6 +3,8 @@ import axiosLastfm from '../apis/lastfm.js';
 import disconnect from '../apis/disconnectDiscogs.js';
 import { lastfmKeyAndConfig}  from '../apiKeys/lastfm.js';
 
+let db = disconnect.database();
+
 export const setUser = (user = 'grrtano') => dispatch => {
 	dispatch( { 
 		type: 'SET_USER',
@@ -13,8 +15,12 @@ export const setUser = (user = 'grrtano') => dispatch => {
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	await dispatch(fetchSongs());
 
-	const fetchedArtists = _.uniq(_.map( getState().songs, 'artist[#text]' ));
-	const stateArtists = _.map(getState().artists, 'name');			
+	let { songs, artists } = getState();
+
+	// songs.forEach(song => dispatch( fetchCredits(song) ))
+
+	const fetchedArtists = _.uniq(_.map( songs, 'artist[#text]' ));
+	const stateArtists = _.map(artists, 'name');			
 	const newArtists = fetchedArtists.filter(artist => stateArtists.indexOf(artist) === -1);
 
 	if (newArtists.length > 0)
@@ -39,10 +45,13 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 }
 
 export const fetchSongs = () => async (dispatch, getState) => {
-	let URIEncodedUser = encodeURIComponent(getState().user);
+	let URIEncodedUser = encodeURIComponent(getState().user)
 
 	const response = await axiosLastfm.get(
-		`?method=user.getrecenttracks&user=${URIEncodedUser}&limit=18${lastfmKeyAndConfig}`
+		`?method=user.getrecenttracks
+		&user=${URIEncodedUser}
+		&limit=18
+		${lastfmKeyAndConfig}`
 	);
 
 	console.log(response);
@@ -67,20 +76,22 @@ export const fetchArtist = (artist = '') => async dispatch => {
 	});
 };
 
-export const fetchCredits = (song = '', artist = '', album = '') => async (dispatch, getState) => {
-	console.log(disconnect);
+export const fetchCredits = (song = '') => (dispatch, getState) => {
 
-	const response = disconnect.search(
-		'Why Sad Song',
-		{page: 1, per_page: 1},
-		function(err, data){
-			console.log(data);
-			return data;
-	});
+	// Eliminate duplicates
+	// let filteredSongs = _.uniq(_.map( songs, 'mbid'));
 
-	disconnect.getRelease(176126, function(err, data){
-		console.log(data);
-	});
+	console.log(song.name);
+
+	let response = db.search(
+			song.name,
+			{page: 1, per_page: 10, artist: song.artist['#text'] },
+			function(err, data){ return data.results } 
+		);
+
+	// db.getRelease(176126, function(err, data){
+	// 	console.log(data);
+	// });
 
 	// const response = await disconnectDiscogs.search(`${song}`, {page: 2, per_page: 75}, (err, data) => {
 	// 	console.log(data);

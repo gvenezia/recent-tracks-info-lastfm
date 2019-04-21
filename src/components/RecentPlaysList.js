@@ -3,21 +3,8 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import FeaturedSongCard from './FeaturedSongCard';
-import { fetchSongsAndArtists } from '../actions';
 
 class RecentPlaysList extends Component {
-	componentDidMount() {
-		this.props.fetchSongsAndArtists();
-
-		this.checkAPI();
-	}
-
-	checkAPI(){
-		setInterval( () =>{
-			console.log('Checking for Last.fm updates');
-			this.props.fetchSongsAndArtists()
-		}, 5000)
-	}
 
 	renderList() {
 		// Helper function to test whether a property exists
@@ -91,18 +78,7 @@ class RecentPlaysList extends Component {
 	render(){
 		return (
 			<div className='ui relaxed grid'>
-				{this.renderList()}
-
-{/*}				<div className="four wide column">
-					<div className="ui card">
-					  <div className="image">
-					    <img src="https://semantic-ui.com/images/wireframe/image.png" />
-					  </div>
-					  <div className="content">
-					    <p className="header">Load More</p>
-					  </div>
-					</div>
-				</div>	*/}
+				{ this.renderList() }
 			</div> 
 		)
 	}
@@ -116,4 +92,4 @@ const mapStateToProps = state => {
 	 }
 }
 
-export default connect(mapStateToProps, { fetchSongsAndArtists })(RecentPlaysList);
+export default connect(mapStateToProps)(RecentPlaysList);
