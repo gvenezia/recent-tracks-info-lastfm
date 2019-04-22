@@ -24,6 +24,9 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	const newSongs = songs.filter(song => stateMbids.indexOf(song.mbid) === -1);
 
+	if (newSongs.length > 0)
+		newSongs.forEach( song => dispatch( fetchCredits))
+
 	// console.log(newSongs);
 
 	// songs.forEach(song => dispatch( fetchCredits(song) ))
@@ -36,7 +39,7 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	if (newArtists.length > 0)
 		newArtists.forEach( artist => dispatch(fetchArtist(artist, URIEncodedUser)) );
 	
-	// songs.forEach( song => dispatch(fetchCredit(song)) );
+	// songs.forEach( song => dispatch(fetchCredits(song)) );
 	// dispatch( fetchCredits() )
 
 	// Alternate functional programming/chain logic
