@@ -61,7 +61,7 @@ class RecentPlaysList extends Component {
 						<div className="extra content">
 							<p>
 								<i className="info icon" 
-					         data-tip="React-tooltip" 
+					         data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         data-for={artist + "tip"}></i>
 								{ exists(artistObj) ? 
 									artistObj.bio.content.slice(0, 100) + '...' :
@@ -74,9 +74,12 @@ class RecentPlaysList extends Component {
 									'Loading...' }
 							</p>
 
-						    <ReactTooltip id={artist + "tip"} place="left" type="dark" effect="float">
-				      		Plays: { exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'}
-				      	</ReactTooltip>
+						    <ReactTooltip
+						    	getContent={(dataTip) => `Plays: ${dataTip}`} 
+						    	id={artist + "tip"} 
+						    	place="left" 
+						    	type="dark" 
+						    	effect="float" />
 						</div>
 			    </div>	
 				</div>
@@ -89,6 +92,7 @@ class RecentPlaysList extends Component {
 			<div className='ui relaxed grid'>
 				{ this.renderList() }
 			</div> 
+
 		)
 	}
 }
