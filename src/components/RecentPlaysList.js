@@ -60,7 +60,9 @@ class RecentPlaysList extends Component {
 						</div>
 						<div className="extra content">
 							<p>
-								<i className="info icon" data-tip="React-tooltip"></i>
+								<i className="info icon" 
+					         data-tip="React-tooltip" 
+					         data-for={artist + "tip"}></i>
 								{ exists(artistObj) ? 
 									artistObj.bio.content.slice(0, 100) + '...' :
 									'Loading...' }
@@ -72,7 +74,7 @@ class RecentPlaysList extends Component {
 									'Loading...' }
 							</p>
 
-						    <ReactTooltip place="left" type="dark" effect="float">
+						    <ReactTooltip id={artist + "tip"} place="left" type="dark" effect="float">
 				      		Plays: { exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'}
 				      	</ReactTooltip>
 						</div>
