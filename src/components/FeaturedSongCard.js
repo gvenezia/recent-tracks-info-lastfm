@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
-
-// Currently does nothing
 import ReactTooltip from 'react-tooltip';
 
 class FeaturedSongCard extends Component {
 	render() {
+		// Helper function to test whether a property exists
+		const exists = x => typeof x !== 'undefined';
+
 		// Destructure props variables
 		let { song, artist, artists, date } = this.props;
 				
 		// Find calculated variables
-		let playing = typeof song['@attr'] !== 'undefined' ? true : false ,
-			artistObj = artists.find( curr => curr.name === artist),
-			artObjDef = typeof artistObj !== 'undefined' ? true : false;
+		let	artistObj = artists.find( curr => curr.name === artist);
 
-			console.log(artistObj, artObjDef);
+			console.log(artistObj);
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
@@ -33,7 +32,7 @@ class FeaturedSongCard extends Component {
 					    <p className="header">"{song.name}"</p>
 					    <div className="meta">
 					      <span className="date">
-					      	{ playing === true ?
+					      	{ exists(song['@attr']) === true ?
 					      		'Currently listening':
 					      		date }
 				      	  </span>
@@ -44,7 +43,7 @@ class FeaturedSongCard extends Component {
 						<div className="extra">
 					    <p>
 					      <i className="info icon" data-tip="React-tooltip"></i>
-					      { artObjDef && 
+					      { exists(artistObj) && 
 					      	(artistObj.bio.content.length < 1 ?
 					      		'N/A' : 
 					      		artistObj.bio.content.length <= 375 ?
@@ -54,14 +53,14 @@ class FeaturedSongCard extends Component {
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	{ artObjDef &&
+					    	{ exists(artistObj) &&
 					    		(artistObj.tags.tag.length < 1 ?
 					    			'N/A' :
 					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
 					    </p>
 
-					    <ReactTooltip place="bottom" type="dark" effect="float">
-				      		Plays: {artObjDef ? artistObj.stats.userplaycount : 'N/A'}
+					    <ReactTooltip place="left" type="dark" effect="float">
+				      		Plays: {exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'}
 				      	</ReactTooltip>
 						</div>
 					  </div>

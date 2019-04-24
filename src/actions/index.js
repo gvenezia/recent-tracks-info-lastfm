@@ -79,8 +79,6 @@ export const fetchArtist = (artist = '', user = '') => async dispatch => {
 		${lastfmKeyAndConfig}`
 	);
 
-	console.log(response.data.artist);
-
 	dispatch( { 
 		type: 'FETCH_ARTIST',
 		payload: response.data.artist

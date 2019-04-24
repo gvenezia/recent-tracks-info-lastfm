@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import ReactTooltip from 'react-tooltip';
 
 import FeaturedSongCard from './FeaturedSongCard';
 
@@ -10,8 +11,10 @@ class RecentPlaysList extends Component {
 		// Helper function to test whether a property exists
 		const exists = x => typeof x !== 'undefined';
 
+		let { songs, artists } = this.props;
+
 		// Map over all songs, checking for properties then returning JSX for each song
-		return this.props.songs.map( (song, i) => {
+		return songs.map( (song, i) => {
 
 			// Check that all properties exist and assign accordingly
 			let name   = exists(song.name) ? song.name : 'N/A',
@@ -20,7 +23,7 @@ class RecentPlaysList extends Component {
 				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			// Find the current song's artist info
-			let artistObj = this.props.artists.find( curr => curr.name === artist);
+			let artistObj = artists.find( curr => curr.name === artist);
 
 			// Create larger cards for the two most recent tracks
 			if (i < 2) {
@@ -57,7 +60,7 @@ class RecentPlaysList extends Component {
 						</div>
 						<div className="extra content">
 							<p>
-								<i className="info icon"></i>
+								<i className="info icon" data-tip="React-tooltip"></i>
 								{ exists(artistObj) ? 
 									artistObj.bio.content.slice(0, 100) + '...' :
 									'Loading...' }
@@ -68,6 +71,10 @@ class RecentPlaysList extends Component {
 									artistObj.tags.tag.map(tag => `${tag.name}, `) :
 									'Loading...' }
 							</p>
+
+						    <ReactTooltip place="left" type="dark" effect="float">
+				      		Plays: { exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'}
+				      	</ReactTooltip>
 						</div>
 			    </div>	
 				</div>
