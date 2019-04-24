@@ -20,16 +20,20 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	await dispatch(fetchSongs(URIEncodedUser));
 
-	let { songs, artists } = getState();
+	let { songs, artists } = getState();	
 
-	const newSongs = songs.filter(song => stateMbids.indexOf(song.mbid) === -1);
+	// Helper function sourced from: https://ilikekillnerds.com/2016/05/removing-duplicate-objects-array-property-name-javascript/ 
+	let newSongs = songs.filter((currObj, i, originalArr) => {
+		let urls = originalArr.map(currMapObj => currMapObj.url);
+        return urls.indexOf(currObj.url) === i; // .indexOf finds the first instance of the url, so every subsequent url in the array won't return `true` (ie be included in the filtered array) bc it won't match the current index `i`
+    });
 
-	if (newSongs.length > 0)
-		newSongs.forEach( song => dispatch( fetchCredits))
+	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
 
-	// console.log(newSongs);
+	console.log(newSongs);
 
-	// songs.forEach(song => dispatch( fetchCredits(song) ))
+	// if (newSongs.length > 0)
+	// 	newSongs.forEach( song => dispatch( fetchCredits(song) ) );
 
 	// Check for any new artists
 	const fetchedArtists = _.uniq(_.map( songs, 'artist[#text]' ));
@@ -38,9 +42,6 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	if (newArtists.length > 0)
 		newArtists.forEach( artist => dispatch(fetchArtist(artist, URIEncodedUser)) );
-	
-	// songs.forEach( song => dispatch(fetchCredits(song)) );
-	// dispatch( fetchCredits() )
 
 	// Alternate functional programming/chain logic
 	// _.chain( getState().songs )
@@ -48,12 +49,6 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	// 	.uniq()
 	// 	.forEach( artist => dispatch(fetchArtist(artist)) )
 	// 	.value();
-
-	// console.log(
-	// 	_.chain( getState().songs )
-	// 		.map('artist[#text]')
-	// 		.uniq().value()
-	// 	);
 	
 }
 
@@ -92,7 +87,7 @@ export const fetchArtist = (artist = '', user = '') => async dispatch => {
 
 export const fetchCredits = (song = '') => (dispatch, getState) => {
 
-	let { songs } = getState().songs;
+	// let { songs } = getState().songs;
 	// Eliminate duplicates
 	// let filteredSongs = _.uniq(_.map( songs, 'mbid'));
 
