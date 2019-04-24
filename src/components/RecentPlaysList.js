@@ -14,10 +14,10 @@ class RecentPlaysList extends Component {
 		return this.props.songs.map( (song, i) => {
 
 			// Check that all properties exist and assign accordingly
-			let name = exists(song.name) ? song.name : 'N/A',
+			let name   = exists(song.name) ? song.name : 'N/A',
 				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
-				album = exists(song.album) ? song.album['#text'] : 'N/A',
-				date = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
+				album  = exists(song.album) ? song.album['#text'] : 'N/A',
+				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			// Find the current song's artist info
 			let artistObj = this.props.artists.find( curr => curr.name === artist);

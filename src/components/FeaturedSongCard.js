@@ -15,6 +15,8 @@ class FeaturedSongCard extends Component {
 			artistObj = artists.find( curr => curr.name === artist),
 			artObjDef = typeof artistObj !== 'undefined' ? true : false;
 
+			console.log(artistObj, artObjDef);
+
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
 				<div className="ui items segment">
@@ -50,9 +52,6 @@ class FeaturedSongCard extends Component {
 					      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
 					      	
 					    </p>
-					    <ReactTooltip place="bottom" type="dark" effect="float">
-					      		Info about the artist
-					      	</ReactTooltip>
 					    <p>
 					    	<i className="music icon"></i>
 					    	{ artObjDef &&
@@ -60,6 +59,10 @@ class FeaturedSongCard extends Component {
 					    			'N/A' :
 					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
 					    </p>
+
+					    <ReactTooltip place="bottom" type="dark" effect="float">
+				      		Plays: {artObjDef ? artistObj.stats.userplaycount : 'N/A'}
+				      	</ReactTooltip>
 						</div>
 					  </div>
 					</div>
