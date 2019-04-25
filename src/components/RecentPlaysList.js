@@ -55,14 +55,15 @@ class RecentPlaysList extends Component {
 								<span className="date">{ date }</span>
 							</div>
 							<div className="description">
-								{artist} — {album}
+								<span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
+					         		data-for={artist + "tip"}>
+					         {artist}
+					         </span> — {album}
 							</div>
 						</div>
 						<div className="extra content">
 							<p>
-								<i className="info icon" 
-					         data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
-					         data-for={artist + "tip"}></i>
+								<i className="info icon" />
 								{ exists(artistObj) ? 
 									artistObj.bio.content.slice(0, 100) + '...' :
 									'Loading...' }

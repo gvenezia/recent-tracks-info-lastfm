@@ -38,13 +38,14 @@ class FeaturedSongCard extends Component {
 				      	  </span>
 					    </div>
 					    <div className="description">
-					      {artist} — {song.album['#text']}
+					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
+					         		data-for={artist + "-featured-tip"}>
+					         {artist}
+					         </span> — {song.album['#text']}
 					    </div>
 						<div className="extra">
 					    <p>
-					      <i className="info icon" 
-					         data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
-					         data-for={artist + "tip"}></i>
+					      <i className="info icon"/>
 					      { exists(artistObj) && 
 					      	(artistObj.bio.content.length < 1 ?
 					      		'N/A' : 
@@ -63,7 +64,7 @@ class FeaturedSongCard extends Component {
 
 					    <ReactTooltip
 					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
-					    	id={artist + "tip"} 
+					    	id={artist + "-featured-tip"} 
 					    	place="left" 
 					    	type="dark" 
 					    	effect="float" />
