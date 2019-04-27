@@ -18,12 +18,21 @@ class RecentPlaysList extends Component {
 
 			// Check that all properties exist and assign accordingly
 			let name   = exists(song.name) ? song.name : 'N/A',
-				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
-				album  = exists(song.album) ? song.album['#text'] : 'N/A',
-				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
+					artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
+					album  = exists(song.album) ? song.album['#text'] : 'N/A',
+					date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			// Find the current song's artist info
 			let artistObj = artists.find( curr => curr.name === artist);
+
+			// Tags that shouldn't display
+			let blockedTags = ['seen live', 'fip', 'under 2000 listeners'];
+
+			let tagsF = [];
+			
+			if (exists(artistObj) ) {
+				tagsF = artistObj.tags.tag.filter(tag => blockedTags.indexOf(tag.name) === -1);
+			}
 
 			// Create larger cards for the two most recent tracks
 			if (i < 2) {
@@ -70,9 +79,13 @@ class RecentPlaysList extends Component {
 							</p>
 							<p>
 								<i className="music icon"></i>
-								{ exists(artistObj) ? 
-									artistObj.tags.tag.map(tag => `${tag.name}, `) :
-									'Loading...' }
+								{ 
+									tagsF.map( (tag, i) => {
+											return i + 1 === tagsF.length ?
+												`${tag.name}` :
+												`${tag.name}, `;
+									})
+								}
 							</p>
 
 						    <ReactTooltip

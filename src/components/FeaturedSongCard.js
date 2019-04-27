@@ -14,7 +14,14 @@ class FeaturedSongCard extends Component {
 		// Find calculated variables
 		let	artistObj = artists.find( curr => curr.name === artist);
 
-			console.log(artistObj);
+		// Tags that shouldn't display
+		let blockedTags = ['seen live', 'fip', 'under 2000 listeners', {artist}];
+
+		let tagsF = [];
+	
+		if (exists(artistObj) ) {
+			tagsF = artistObj.tags.tag.filter(tag => blockedTags.indexOf(tag.name) === -1);
+		}
 
 		return (
 			<div style={{marginTop: '14px'}} className="eight wide column">
@@ -56,10 +63,13 @@ class FeaturedSongCard extends Component {
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	{ exists(artistObj) &&
-					    		(artistObj.tags.tag.length < 1 ?
-					    			'N/A' :
-					    			artistObj.tags.tag.map(tag => `${tag.name}, `) )}
+					    	{ 
+					    		tagsF.map( (tag, i) => {
+											return i + 1 === tagsF.length ?
+												`${tag.name}` :
+												`${tag.name}, `;
+									})
+								}
 					    </p>
 
 					    <ReactTooltip
