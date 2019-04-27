@@ -56,7 +56,7 @@ export const fetchSongs = (user = '') => async (dispatch, getState) => {
 	const response = await axiosLastfm.get(
 		`?method=user.getrecenttracks
 		&user=${user}
-		&limit=18
+		&limit=17
 		${lastfmKeyAndConfig}`
 	);
 
