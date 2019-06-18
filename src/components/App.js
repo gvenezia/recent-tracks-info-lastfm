@@ -29,8 +29,8 @@ class App extends Component {
 			<div className="ui container">
 				
 				<h1>
-					What Has 
-					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
+					What Has Gaetano
+					{/*<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;
 	          <form 
 	            className="ui form" 
@@ -41,7 +41,8 @@ class App extends Component {
 								placeholder="_______________"
 	            />
 	          </form>
-					</span>&nbsp; Been Listening to?
+					</span>&nbsp; */}
+					 Been Listening to?
 		 		</h1>
 				<RecentPlaysList />
 			</div>
