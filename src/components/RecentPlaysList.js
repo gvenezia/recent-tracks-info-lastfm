@@ -26,7 +26,7 @@ class RecentPlaysList extends Component {
 			let artistObj = artists.find( curr => curr.name === artist);
 
 			// Tags that shouldn't display
-			let blockedTags = ['seen live', 'fip', 'under 2000 listeners'];
+			let blockedTags = [ `${artist}`, 'seen live', 'fip', 'under 2000 listeners', 'nickelodeon'];
 
 			let tagsF = [];
 			
