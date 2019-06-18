@@ -41,8 +41,8 @@ class App extends Component {
 								placeholder="_______________"
 	            />
 	          </form>
-					</span>&nbsp; */}
-					 Been Listening to?
+					</span>*/} 
+					 &nbsp;Been Listening to?
 		 		</h1>
 				<RecentPlaysList />
 			</div>
