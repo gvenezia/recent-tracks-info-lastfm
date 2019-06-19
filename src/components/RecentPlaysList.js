@@ -48,7 +48,7 @@ class RecentPlaysList extends Component {
 			
 			// The rest of the songs will be displayed four columns wide with less info
 			return (
-				<div key={i} style={{marginTop: '14px'}} className="four wide column">
+				<div key={i} style={{marginTop: '14px'}} className="stackable four wide column">
 					<div className="ui card">
 						<div className="image">
 							<img 
@@ -103,7 +103,7 @@ class RecentPlaysList extends Component {
 
 	render(){
 		return (
-			<div className='ui relaxed grid'>
+			<div className='ui stackable relaxed grid'>
 				{ this.renderList() }
 			</div> 
 

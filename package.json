@@ -2,7 +2,7 @@
   "name": "whats-playing",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://last-fm.gvenezia.com/",
+  "homepage": "https://gvenezia.github.io/recent-tracks-info-lastfm/",
   "dependencies": {
     "axios": "^0.18.0",
     "disconnect": "^1.2.1",
@@ -20,7 +20,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "deploy" : "npm run build && gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

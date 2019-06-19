@@ -24,7 +24,7 @@ class FeaturedSongCard extends Component {
 		}
 
 		return (
-			<div style={{marginTop: '14px'}} className="eight wide column">
+			<div style={{marginTop: '14px'}} className="stackable eight wide column">
 				<div className="ui items segment">
 					<div className="ui item ">
 					  <div style={{'width': '250px'}} className="image">
