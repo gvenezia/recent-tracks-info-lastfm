@@ -2,7 +2,7 @@
   "name": "whats-playing",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gvenezia.github.io/recent-tracks-info-lastfm/",
+  "homepage": "http://last-fm.gvenezia.com/.",
   "dependencies": {
     "axios": "^0.18.0",
     "disconnect": "^1.2.1",
