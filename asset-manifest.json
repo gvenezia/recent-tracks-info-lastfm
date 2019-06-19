@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.cadabdcb.chunk.js",
-    "main.js.map": "/static/js/main.cadabdcb.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.c5541365.js",
-    "runtime~main.js.map": "/static/js/runtime~main.c5541365.js.map",
-    "static/js/2.68482b47.chunk.js": "/static/js/2.68482b47.chunk.js",
-    "static/js/2.68482b47.chunk.js.map": "/static/js/2.68482b47.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.414ff4ef4023bdf2ad72d390edcc038b.js": "/precache-manifest.414ff4ef4023bdf2ad72d390edcc038b.js",
-    "service-worker.js": "/service-worker.js"
+    "main.js": "/recent-tracks-info-lastfm/static/js/main.cadabdcb.chunk.js",
+    "main.js.map": "/recent-tracks-info-lastfm/static/js/main.cadabdcb.chunk.js.map",
+    "runtime~main.js": "/recent-tracks-info-lastfm/static/js/runtime~main.98501f4b.js",
+    "runtime~main.js.map": "/recent-tracks-info-lastfm/static/js/runtime~main.98501f4b.js.map",
+    "static/js/2.9e357be3.chunk.js": "/recent-tracks-info-lastfm/static/js/2.9e357be3.chunk.js",
+    "static/js/2.9e357be3.chunk.js.map": "/recent-tracks-info-lastfm/static/js/2.9e357be3.chunk.js.map",
+    "index.html": "/recent-tracks-info-lastfm/index.html",
+    "precache-manifest.85f7f987a9eea361ce8ef38e840f0d50.js": "/recent-tracks-info-lastfm/precache-manifest.85f7f987a9eea361ce8ef38e840f0d50.js",
+    "service-worker.js": "/recent-tracks-info-lastfm/service-worker.js"
   }
 }
