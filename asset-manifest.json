@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.cadabdcb.chunk.js",
-    "main.js.map": "/static/js/main.cadabdcb.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.c5541365.js",
-    "runtime~main.js.map": "/static/js/runtime~main.c5541365.js.map",
-    "static/js/2.68482b47.chunk.js": "/static/js/2.68482b47.chunk.js",
-    "static/js/2.68482b47.chunk.js.map": "/static/js/2.68482b47.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.414ff4ef4023bdf2ad72d390edcc038b.js": "/precache-manifest.414ff4ef4023bdf2ad72d390edcc038b.js",
-    "service-worker.js": "/service-worker.js"
+    "main.js": "last-fm.gvenezia.com/static/js/main.cadabdcb.chunk.js",
+    "main.js.map": "last-fm.gvenezia.com/static/js/main.cadabdcb.chunk.js.map",
+    "runtime~main.js": "last-fm.gvenezia.com/static/js/runtime~main.63561528.js",
+    "runtime~main.js.map": "last-fm.gvenezia.com/static/js/runtime~main.63561528.js.map",
+    "static/js/2.29a72ea5.chunk.js": "last-fm.gvenezia.com/static/js/2.29a72ea5.chunk.js",
+    "static/js/2.29a72ea5.chunk.js.map": "last-fm.gvenezia.com/static/js/2.29a72ea5.chunk.js.map",
+    "index.html": "last-fm.gvenezia.com/index.html",
+    "precache-manifest.2cda1f2bc2e0089dce32f735e818376f.js": "last-fm.gvenezia.com/precache-manifest.2cda1f2bc2e0089dce32f735e818376f.js",
+    "service-worker.js": "last-fm.gvenezia.com/service-worker.js"
   }
 }
