@@ -29,11 +29,10 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
 
-	console.log('newSongs: ', newSongs);
-
 	if (newSongs.length > 0){
-		dispatch( fetchCredits(newSongs[0]) )
-		// newSongs.forEach( song => dispatch( fetchCredits(song) ) );
+		console.log('newSongs: ', newSongs);
+		// dispatch( fetchCredits(newSongs[0]) )
+		newSongs.forEach( song => dispatch( fetchCredits(song) ) );
 
 	}
 
@@ -90,23 +89,34 @@ export const fetchArtist = (artist = '', user = '') => async dispatch => {
 export const fetchCredits = (song = '') => (dispatch, getState) => {
 	let currCredit = getState().credits;
 
-	console.log(song.name);
-	console.log(currCredit);
+	// console.log(song.name);
+	// console.log(currCredit);
 
 	db.search(
 		song.name,
 		{page: 1, per_page: 1, artist: song.artist['#text'] },
-		function(err, data){ 
-			dispatch( {
-				type: 'FETCH_CREDITS',
-				payload: data.results[0]
-			}); 
+		function(err, data){
+			if (data.results.length > 0){
+				console.log('discgos results: ',data.results);
+				let response = {
+					song: song.name,
+					album: song.album['#text'],
+					label: data.results[0].label.length !== 0 ? data.results[0].label[0] : 'N/A',
+					uri: data.results[0].uri
+				}; 
+				// console.log(response);
+				dispatch( {
+					type: 'FETCH_CREDITS',
+					payload: response
+				}); 
+			} else {
+				console.log('No Discogs record for ' + song.name + ' by ' + song.artist['#text']);
+			}
+			
 		} 
 	);
 
 	// db.getRelease(176126, function(err, data){
 	// 	console.log(data);
 	// });
-
-	
 }

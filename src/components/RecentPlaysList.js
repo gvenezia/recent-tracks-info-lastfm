@@ -11,19 +11,23 @@ class RecentPlaysList extends Component {
 		// Helper function to test whether a property exists
 		const exists = x => typeof x !== 'undefined';
 
-		let { songs, artists } = this.props;
+		let { songs, artists, credits } = this.props;
 
 		// Map over all songs, checking for properties then returning JSX for each song
 		return songs.map( (song, i) => {
 
 			// Check that all properties exist and assign accordingly
 			let name   = exists(song.name) ? song.name : 'N/A',
-					artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
-					album  = exists(song.album) ? song.album['#text'] : 'N/A',
-					date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
+				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
+				album  = exists(song.album) ? song.album['#text'] : 'N/A',
+				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
 			// Find the current song's artist info
 			let artistObj = artists.find( curr => curr.name === artist);
+
+			// Find the current song's credits
+			// credits.forEach(d => {console.log(d.album);})
+			let creditObj = credits.find( curr => curr.album === album);
 
 			// Tags that shouldn't display
 			let blockedTags = [ `${artist}`, 'seen live', 'fip', 'under 2000 listeners', 'nickelodeon'];
@@ -114,6 +118,7 @@ class RecentPlaysList extends Component {
 const mapStateToProps = state => {
 	return { 
 		songs: state.songs,
+		credits: state.credits,
 		artists: state.artists,
 		user: state.user
 	 }
