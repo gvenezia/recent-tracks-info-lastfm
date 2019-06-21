@@ -16,7 +16,6 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	const URIEncodedUser = encodeURIComponent(getState().user)
 
 	const stateMbids = _.uniq(_.map( getState().songs, 'mbid'));
-	// console.log(stateMbids);
 
 	await dispatch(fetchSongs(URIEncodedUser));
 
@@ -30,10 +29,13 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
 
-	console.log(newSongs);
+	console.log('newSongs: ', newSongs);
 
-	// if (newSongs.length > 0)
-	// 	newSongs.forEach( song => dispatch( fetchCredits(song) ) );
+	if (newSongs.length > 0){
+		dispatch( fetchCredits(newSongs[0]) )
+		// newSongs.forEach( song => dispatch( fetchCredits(song) ) );
+
+	}
 
 	// Check for any new artists
 	const fetchedArtists = _.uniq(_.map( songs, 'artist[#text]' ));
@@ -60,7 +62,7 @@ export const fetchSongs = (user = '') => async (dispatch, getState) => {
 		${lastfmKeyAndConfig}`
 	);
 
-	console.log(response);
+	// console.log(response);
 
 	dispatch( { 
 		type: 'FETCH_SONGS',
@@ -86,27 +88,25 @@ export const fetchArtist = (artist = '', user = '') => async dispatch => {
 };
 
 export const fetchCredits = (song = '') => (dispatch, getState) => {
-
-	// let { songs } = getState().songs;
-	// Eliminate duplicates
-	// let filteredSongs = _.uniq(_.map( songs, 'mbid'));
+	let currCredit = getState().credits;
 
 	console.log(song.name);
+	console.log(currCredit);
 
-	let response = db.search(
-			song.name,
-			{page: 1, per_page: 10, artist: song.artist['#text'] },
-			function(err, data){ return data.results } 
-		);
-
-
+	db.search(
+		song.name,
+		{page: 1, per_page: 1, artist: song.artist['#text'] },
+		function(err, data){ 
+			dispatch( {
+				type: 'FETCH_CREDITS',
+				payload: data.results[0]
+			}); 
+		} 
+	);
 
 	// db.getRelease(176126, function(err, data){
 	// 	console.log(data);
 	// });
 
-	dispatch( {
-		type: 'FETCH_CREDITS',
-		payload: response
-	})
+	
 }
