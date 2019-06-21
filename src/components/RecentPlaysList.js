@@ -22,15 +22,12 @@ class RecentPlaysList extends Component {
 				album  = exists(song.album) ? song.album['#text'] : 'N/A',
 				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
 
-			// Find the current song's artist info
-			let artistObj = artists.find( curr => curr.name === artist);
-
-			// Find the current song's credits
-			// credits.forEach(d => {console.log(d.album);})
-			let creditObj = credits.find( curr => curr.album === album);
+			// Find the current song's artist info and credits
+			const artistObj = artists.find( curr => curr.name === artist),
+				  creditObj = credits.find( curr => curr.album === album);
 
 			// Tags that shouldn't display
-			let blockedTags = [ `${artist}`, 'seen live', 'fip', 'under 2000 listeners', 'nickelodeon'];
+			const blockedTags = [ `${artist}`, 'seen live', 'fip', 'under 2000 listeners', 'nickelodeon'];
 
 			let tagsF = [];
 			
@@ -45,6 +42,8 @@ class RecentPlaysList extends Component {
 						song={song} 
 						artist={artist}
 						date={date}
+						album={album}
+						credits={credits}
 						key={i}
 					/>
 				)	
@@ -71,7 +70,7 @@ class RecentPlaysList extends Component {
 								<span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         		data-for={artist + "tip"}>
 					         {artist}
-					         </span> — {album}
+					         </span> — {album} ({exists(creditObj) ? creditObj.label : 'Loading...'})
 							</div>
 						</div>
 						<div className="extra content">

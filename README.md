@@ -34,6 +34,7 @@ Testing:
 * redux-thunk
 * npm w/ [axios](https://www.npmjs.com/package/axios), [react-html-parser](https://www.npmjs.com/package/react-html-parser), [lodash](https://lodash.com/)
 * [Last.fm API](https://www.last.fm/api/intro)
+* Discogs API via [@bartve's library for Node](https://github.com/bartve/disconnect)
 * [Semantic UI](https://semantic-ui.com/)
 * hidden `.js` file in `src/apiKeys/` for the Last.fm API key and secret
 * ~smoke tests for components~ (in progress)

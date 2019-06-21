@@ -9,10 +9,11 @@ class FeaturedSongCard extends Component {
 		const exists = x => typeof x !== 'undefined';
 
 		// Destructure props variables
-		let { song, artist, artists, date } = this.props;
+		let { song, artist, artists, album, credits, date } = this.props;
 				
-		// Find calculated variables
-		let	artistObj = artists.find( curr => curr.name === artist);
+		// Find the current song's artist info and credits
+		const artistObj = artists.find( curr => curr.name === artist),
+			  creditObj = credits.find( curr => curr.album === album);
 
 		// Tags that shouldn't display
 		let blockedTags = ['seen live', 'fip', 'under 2000 listeners', 'nickelodeon', `${artist}`];
@@ -48,7 +49,7 @@ class FeaturedSongCard extends Component {
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         		data-for={artist + "-featured-tip"}>
 					         {artist}
-					         </span> — {song.album['#text']}
+					         </span> — {song.album['#text']} ({exists(creditObj) ? creditObj.label : 'Loading...'})
 					    </div>
 						<div className="extra">
 					    <p>
