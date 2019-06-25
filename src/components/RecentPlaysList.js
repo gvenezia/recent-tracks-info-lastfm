@@ -5,6 +5,8 @@ import ReactTooltip from 'react-tooltip';
 
 import FeaturedSongCard from './FeaturedSongCard';
 
+import '../index.css';
+
 class RecentPlaysList extends Component {
 
 	renderList() {
@@ -97,6 +99,14 @@ class RecentPlaysList extends Component {
 						    	place="left" 
 						    	type="dark" 
 						    	effect="float" />
+						</div>
+						<div class="extra content">
+						External Links: &nbsp;
+						    <a href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
+						    	<img class="link-icons" 
+							    	src="discogs-icon.jpeg"
+							    	alt="discogs-icon"/>
+					    	</a>
 						</div>
 			    </div>	
 				</div>
