@@ -7,6 +7,7 @@ This app uses the Last.fm API to fetch your most recently played songs and displ
 - View my (Gaetano's) recent listening history
 - View the song, date and time of listen, album, album art, artist, basic bio, artist genres
 – Navigate to an album's Discogs page with dynamically populated external links
+- View is responsive to screen size
 - ~Last.fm users can pull up their recent listening data from last.fm~ (in progress)
 - ~Guests can choose from a pre-defined list of usernames~ (in progress)
 - ~Guests can see some basic data visualizations of their listening history and artist info~ (in progress)
