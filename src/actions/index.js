@@ -86,16 +86,18 @@ export const fetchArtist = (artist = '', user = '') => async dispatch => {
 	});
 };
 
-export const fetchCredits = (song = '') => (dispatch, getState) => {
-	let currCredit = getState().credits;
+export const fetchCredits = (song = '') => async (dispatch, getState) => {
+	// let currCredit = getState().credits;
 
 	// console.log(song.name);
 	// console.log(currCredit);
 
-	db.search(
+	await db.search(
 		song.name,
 		{page: 1, per_page: 1, artist: song.artist['#text'] },
-		function(err, data){
+		function(err, data, rateLimit){
+			if (err) throw err;
+			console.log(rateLimit);
 			if (data.results.length > 0){
 				console.log('discgos results: ',data.results);
 				let response = {

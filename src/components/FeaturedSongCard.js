@@ -9,23 +9,10 @@ class FeaturedSongCard extends Component {
 		const exists = x => typeof x !== 'undefined';
 
 		// Destructure props variables
-		let { song, artist, artists, album, credits, date } = this.props;
-				
-		// Find the current song's artist info and credits
-		const artistObj = artists.find( curr => curr.name === artist),
-			  creditObj = credits.find( curr => curr.album === album);
-
-		// Tags that shouldn't display
-		let blockedTags = ['seen live', 'fip', 'under 2000 listeners', 'nickelodeon', `${artist}`];
-
-		let tagsF = [];
-	
-		if (exists(artistObj) ) {
-			tagsF = artistObj.tags.tag.filter(tag => blockedTags.indexOf(tag.name) === -1);
-		}
+		let { song, title, artist, album, date, tagsF, artistObj, creditObj, key, url } = this.props;
 
 		return (
-			<div style={{marginTop: '14px'}} className="stackable eight wide column">
+			<div key={key} style={{marginTop: '14px'}} className="stackable eight wide column">
 				<div className="ui items segment">
 					<div className="ui item ">
 					  <div style={{'width': '250px'}} className="image">
@@ -37,19 +24,15 @@ class FeaturedSongCard extends Component {
 						/>
 					  </div>
 					  <div className="content">
-					    <p className="header">"{song.name}"</p>
+					    <p className="header">"{title}"</p>
 					    <div className="meta">
-					      <span className="date">
-					      	{ exists(song['@attr']) === true ?
-					      		'Currently listening':
-					      		date }
-				      	  </span>
+					     <span className="date">{ date }</span>
 					    </div>
 					    <div className="description">
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         		data-for={artist + "-featured-tip"}>
 					         {artist}
-					         </span> — {song.album['#text']} ({exists(creditObj) ? creditObj.label : 'Loading...'})
+					         </span> — {album} ({exists(creditObj) ? creditObj.label : 'Loading...'})
 					    </div>
 						<div className="extra">
 					    <p>
@@ -80,6 +63,19 @@ class FeaturedSongCard extends Component {
 					    	type="dark" 
 					    	effect="float" />
 						</div>
+						<div className="extra content">
+						External Links: &nbsp;
+					    <a href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
+					    	<img className="link-icons" 
+						    	src="discogs-icon.jpeg"
+						    	alt="discogs-icon"/>
+				    	</a>
+				    	&nbsp;
+				    	<a href={url}>
+					    	<i id="lastfm-icon" className="lastfm icon red"></i>
+				    	</a>
+				    	
+					</div>
 					  </div>
 					</div>
 				</div>
@@ -89,8 +85,4 @@ class FeaturedSongCard extends Component {
 
 }
 
-const mapStateToProps = state => {
-	return { artists: state.artists }
-}
-
-export default connect(mapStateToProps)(FeaturedSongCard)
+export default connect()(FeaturedSongCard);

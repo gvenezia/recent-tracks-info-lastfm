@@ -14,8 +14,7 @@ class App extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log('INPUT: ',event);
-		this.props.setUser(event.target.value);
+		// this.props.setUser();
 	}
 
 	checkAPI(){
@@ -28,22 +27,20 @@ class App extends Component {
 	render(){
 		return (
 			<div className="ui container">
-				
 				<h1>
 					What Has Gaetano
-					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
+					{/*<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;
 	          <form 
 	            className="ui form" 
 	            onSubmit={this.handleSubmit} 
 	          >
 	            <input 
-					type="text"
-					placeholder="_______________"
+								type="text"
+								placeholder="_______________"
 	            />
 	          </form>
-					</span>
-
+					</span>*/} 
 					 &nbsp;Been Listening to?
 		 		</h1>
 				<RecentPlaysList />
