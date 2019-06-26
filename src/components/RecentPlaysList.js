@@ -22,7 +22,8 @@ class RecentPlaysList extends Component {
 			let name   = exists(song.name) ? song.name : 'N/A',
 				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
 				album  = exists(song.album) ? song.album['#text'] : 'N/A',
-				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A';
+				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A',
+				url    = exists(song.url) ? song.url : 'https://www.last.fm/search?q=' + artist;
 
 			// Find the current song's artist info and credits
 			const artistObj = artists.find( curr => curr.name === artist),
@@ -100,13 +101,18 @@ class RecentPlaysList extends Component {
 						    	type="dark" 
 						    	effect="float" />
 						</div>
-						<div class="extra content">
+						<div className="extra content">
 						External Links: &nbsp;
 						    <a href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
 						    	<img class="link-icons" 
 							    	src="discogs-icon.jpeg"
 							    	alt="discogs-icon"/>
 					    	</a>
+					    	&nbsp;
+					    	<a href={url}>
+						    	<i id="lastfm-icon" className="lastfm icon red"></i>
+					    	</a>
+					    	
 						</div>
 			    </div>	
 				</div>
