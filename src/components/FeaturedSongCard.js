@@ -26,7 +26,10 @@ class FeaturedSongCard extends Component {
 					  <div className="content">
 					    <p className="header">"{title}"</p>
 					    <div className="meta">
-					     <span className="date">{ date }</span>
+					     <span className="date">
+					     	{ exists(song['@attr']) === true ?
+					      		'Currently listening':
+					      		date }</span>
 					    </div>
 					    <div className="description">
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
@@ -65,15 +68,21 @@ class FeaturedSongCard extends Component {
 						</div>
 						<div className="extra content">
 						External Links: &nbsp;
-					    <a href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
+					    <a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
 					    	<img className="link-icons" 
 						    	src="discogs-icon.jpeg"
 						    	alt="discogs-icon"/>
 				    	</a>
-				    	&nbsp;
-				    	<a href={url}>
+				    	<a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={url}>
 					    	<i id="lastfm-icon" className="lastfm icon red"></i>
 				    	</a>
+				    	<a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
 				    	
 					</div>
 					  </div>

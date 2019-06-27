@@ -62,15 +62,21 @@ class RegularSongCard extends Component {
 					</div>
 					<div className="extra content">
 						External Links: &nbsp;
-					    <a href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
+					    <a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
 					    	<img className="link-icons" 
 						    	src="discogs-icon.jpeg"
 						    	alt="discogs-icon"/>
-				    	</a>
-				    	&nbsp;
-				    	<a href={url}>
+				    	</a> &nbsp;
+				    	<a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={url}>
 					    	<i id="lastfm-icon" className="lastfm icon red"></i>
 				    	</a>
+				    	<a target="_blank"
+					    	rel="noopener noreferrer"
+					    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
 				    	
 					</div>
 		    	</div>	
