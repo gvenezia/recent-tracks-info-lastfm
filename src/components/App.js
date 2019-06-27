@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import RecentPlaysList from './RecentPlaysList';
 import { connect } from 'react-redux';
 
-import { setUser, fetchSongsAndArtists } from '../actions';
+import { setUser, setWidth, fetchSongsAndArtists } from '../actions';
 
 class App extends Component {
+
+	componentWillMount() {
+	  window.addEventListener('resize', this.handleWindowSizeChange);
+	}
 
 	componentDidMount() {
 		this.props.setUser();
@@ -15,6 +19,10 @@ class App extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		// this.props.setUser();
+	}
+
+	handleWindowSizeChange(){
+		this.props.setWidth(window.innerWidth);
 	}
 
 	checkAPI(){
@@ -49,11 +57,4 @@ class App extends Component {
 	}	
 }
 
-const mapStateToProps = state => {
-	return { 
-    user: state.user,
-    credits: state.credits
-  }
-}
-
-export default connect(mapStateToProps, { setUser, fetchSongsAndArtists })(App);
+export default connect(null, { setUser, setWidth, fetchSongsAndArtists })(App);

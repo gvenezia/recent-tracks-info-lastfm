@@ -12,6 +12,13 @@ export const setUser = (user = 'grrtano') => dispatch => {
 	});
 };
 
+export const setWidth = (width) => dispatch => {
+	dispatch({
+		type: 'SET_WIDTH',
+		payload: width
+	});
+}
+
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	const URIEncodedUser = encodeURIComponent(getState().user)
 
@@ -57,11 +64,9 @@ export const fetchSongs = (user = '') => async (dispatch, getState) => {
 	const response = await axiosLastfm.get(
 		`?method=user.getrecenttracks
 		&user=${user}
-		&limit=17
+		&limit=18
 		${lastfmKeyAndConfig}`
 	);
-
-	// console.log(response);
 
 	dispatch( { 
 		type: 'FETCH_SONGS',

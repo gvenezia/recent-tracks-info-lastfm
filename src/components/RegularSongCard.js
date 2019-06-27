@@ -13,7 +13,7 @@ class RegularSongCard extends Component {
 		let { song, title, artist, album, date, tagsF, artistObj, creditObj, key, url } = this.props;
 
 		return (
-			<div key={key} style={{marginTop: '14px'}} className="stackable four wide column">
+			<div key={key} style={{marginTop: '14px'}} className="four wide column">
 				<div className="ui card">
 					<div className="image">
 						<img 
@@ -61,23 +61,25 @@ class RegularSongCard extends Component {
 					    	effect="float" />
 					</div>
 					<div className="extra content">
-						External Links: &nbsp;
-					    <a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
-					    	<img className="link-icons" 
-						    	src="discogs-icon.jpeg"
-						    	alt="discogs-icon"/>
-				    	</a> &nbsp;
-				    	<a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={url}>
-					    	<i id="lastfm-icon" className="lastfm icon red"></i>
-				    	</a>
-				    	<a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
-				    	
+						<p>Credits: </p>
+						<p>
+							External Links: &nbsp;
+						    <a target="_blank"
+						    	rel="noopener noreferrer"
+						    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
+						    	<img className="link-icons" 
+							    	src="discogs-icon.jpeg"
+							    	alt="discogs-icon"/>
+					    	</a> &nbsp;
+					    	<a target="_blank"
+						    	rel="noopener noreferrer"
+						    	href={url}>
+						    	<i id="lastfm-icon" className="lastfm icon red"></i>
+					    	</a>
+					    	<a target="_blank"
+						    	rel="noopener noreferrer"
+						    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
+				    	</p>
 					</div>
 		    	</div>	
 			</div>

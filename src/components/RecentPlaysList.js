@@ -5,15 +5,13 @@ import moment from 'moment';
 import FeaturedSongCard from './FeaturedSongCard';
 import RegularSongCard from './RegularSongCard';
 
-import '../index.css';
-
 class RecentPlaysList extends Component {
 
 	renderList() {
 		// Helper function to test whether a property exists
 		const exists = x => typeof x !== 'undefined';
 
-		let { songs, artists, credits } = this.props;
+		let { songs, artists, credits, width } = this.props;
 
 		// Map over all songs, checking for properties then returning JSX for each song
 		return songs.map( (song, i) => {
@@ -76,7 +74,7 @@ class RecentPlaysList extends Component {
 
 	render(){
 		return (
-			<div className='ui stackable relaxed grid'>
+			<div className='ui stackable grid'>
 				{ this.renderList() }
 			</div> 
 
@@ -89,7 +87,8 @@ const mapStateToProps = state => {
 		songs: state.songs,
 		credits: state.credits,
 		artists: state.artists,
-		user: state.user
+		user: state.user,
+		width: state.width
 	 }
 }
 
