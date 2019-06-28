@@ -6,10 +6,6 @@ import { setUser, setWidth, fetchSongsAndArtists } from '../actions';
 
 class App extends Component {
 
-	componentWillMount() {
-	  window.addEventListener('resize', this.handleWindowSizeChange);
-	}
-
 	componentDidMount() {
 		this.props.setUser();
 		this.props.fetchSongsAndArtists();
@@ -19,10 +15,6 @@ class App extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		// this.props.setUser();
-	}
-
-	handleWindowSizeChange(){
-		this.props.setWidth(window.innerWidth);
 	}
 
 	checkAPI(){

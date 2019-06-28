@@ -13,8 +13,8 @@ class RegularSongCard extends Component {
 		let { song, title, artist, album, date, tagsF, artistObj, creditObj, key, url } = this.props;
 
 		return (
-			<div key={key} style={{marginTop: '14px'}} className="four wide column">
-				<div className="ui card">
+			<div key={key} className="four wide column">
+				<div style={{marginTop: '14px'}} className="ui card centered">
 					<div className="image">
 						<img 
 							alt="album art" 

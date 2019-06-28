@@ -37,23 +37,7 @@ class RecentPlaysList extends Component {
 			}
 
 			// Create larger cards for the two most recent tracks
-			if (i < 2) {
-				return (
-					<FeaturedSongCard 
-						song={song} 
-						artist={artist}
-						title={title}
-						date={date}
-						url={url}
-						album={album}
-						key={i}
-						tagsF={tagsF}
-						artistObj={artistObj}
-						creditObj={creditObj}
-					/>
-				)	
-			} else { 
-				// The rest of the songs will be displayed four columns wide with less info
+			if (width > 500){
 				return (
 					<RegularSongCard
 						song={song} 
@@ -68,7 +52,43 @@ class RecentPlaysList extends Component {
 						creditObj={creditObj}
 					/>
 				)
+			} else {
+				// Create larger cards for the two most recent tracks
+				if (i < 2) {
+					return (
+						<FeaturedSongCard 
+							song={song} 
+							artist={artist}
+							title={title}
+							date={date}
+							url={url}
+							album={album}
+							key={i}
+							tagsF={tagsF}
+							artistObj={artistObj}
+							creditObj={creditObj}
+						/>
+					)	
+				} else { 
+					// The rest of the songs will be displayed four columns wide with less info
+					return (
+						<RegularSongCard
+							song={song} 
+							artist={artist}
+							title={title}
+							date={date}
+							url={url}
+							album={album}
+							key={i}
+							tagsF={tagsF}
+							artistObj={artistObj}
+							creditObj={creditObj}
+						/>
+					)
+				}
 			}
+
+			
 		}); 
 	} // End renderList()
 
