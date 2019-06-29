@@ -37,8 +37,7 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
 
 	if (newSongs.length > 0){
-		console.log('newSongs: ', newSongs);
-		// dispatch( fetchCredits(newSongs[0]) )
+		// console.log('newSongs: ', newSongs);
 		newSongs.forEach( song => dispatch( fetchCredits(song) ) );
 
 	}
@@ -100,11 +99,10 @@ export const fetchCredits = (song = '') => async (dispatch, getState) => {
 	await db.search(
 		song.name,
 		{page: 1, per_page: 1, artist: song.artist['#text'] },
-		function(err, data, rateLimit){
+		function(err, data){
 			if (err) throw err;
-			console.log(rateLimit);
 			if (data.results.length > 0){
-				console.log('discgos results: ',data.results);
+				// console.log('discgos results: ',data.results);
 				let response = {
 					song: song.name,
 					album: song.album['#text'],
@@ -117,7 +115,7 @@ export const fetchCredits = (song = '') => async (dispatch, getState) => {
 					payload: response
 				}); 
 			} else {
-				console.log('No Discogs record for ' + song.name + ' by ' + song.artist['#text']);
+				// console.log('No Discogs record for ' + song.name + ' by ' + song.artist['#text']);
 			}
 			
 		} 

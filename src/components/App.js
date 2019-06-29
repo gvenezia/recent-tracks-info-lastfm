@@ -7,6 +7,7 @@ import { setUser, setWidth, fetchSongsAndArtists } from '../actions';
 class App extends Component {
 
 	componentDidMount() {
+		this.props.setWidth(window.innerWidth);
 		this.props.setUser();
 		this.props.fetchSongsAndArtists();
 		this.checkAPI();

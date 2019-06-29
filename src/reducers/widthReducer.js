@@ -1,7 +1,7 @@
 export default (state = [], action) => {
 	switch (action.type){
-		case 'FETCH_WIDTH':
-			return [...state, action.payload];
+		case 'SET_WIDTH':
+			return action.payload;
 
 		default:
 			return state;

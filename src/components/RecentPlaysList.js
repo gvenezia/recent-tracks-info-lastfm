@@ -13,6 +13,8 @@ class RecentPlaysList extends Component {
 
 		let { songs, artists, credits, width } = this.props;
 
+		console.log(width);
+
 		// Map over all songs, checking for properties then returning JSX for each song
 		return songs.map( (song, i) => {
 
@@ -37,7 +39,7 @@ class RecentPlaysList extends Component {
 			}
 
 			// Create larger cards for the two most recent tracks
-			if (width > 500){
+			if (width < 500){
 				return (
 					<RegularSongCard
 						song={song} 
