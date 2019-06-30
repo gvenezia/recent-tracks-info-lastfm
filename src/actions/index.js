@@ -20,22 +20,23 @@ export const setWidth = (width) => dispatch => {
 }
 
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
-	let { songs, artists, user } = getState();	
+	const URIEncodedUser = encodeURIComponent(getState().user);
 
-	const URIEncodedUser = encodeURIComponent(user);
+	const stateMbids = _.uniq(_.map(getState().songs, 'mbid'));
 
-	const stateMbids = _.uniq(_.map(songs, 'mbid'));
-
+	// Fetch Songs
 	await dispatch(fetchSongs(URIEncodedUser));	
 
+	let { songs, artists } = getState();	
+
+	
 	// Helper function sourced from: https://ilikekillnerds.com/2016/05/removing-duplicate-objects-array-property-name-javascript/ 
-	let urls = songs.map(currMapObj => currMapObj.url);
-	let newSongs = songs.filter((currObj, i,) => {
-        return urls.indexOf(currObj.url) === i; // .indexOf finds the first instance of the url, and ignores any duplicates after the first instance so every subsequent url in the array won't return `true` (ie be included in the filtered array) bc it won't match the current index `i`
-    });
-
-	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
-
+	// const urlsArr = songs.map(currMapObj => currMapObj.url);
+	// // Filter based on the first found instance of the url (ignores any other duplicates with higher indexes)
+	// let newSongs = songs.filter((currObj, i) => urlsArr.indexOf(currObj.url) === i);
+	console.log(songs);
+	let newSongs = songs.filter(song => stateMbids.indexOf(song.mbid) === -1);
+	console.log(newSongs);
 	if (newSongs.length > 0){
 		// console.log('newSongs: ', newSongs);
 		newSongs.forEach( song => dispatch( fetchCredits(song) ) );
@@ -66,10 +67,10 @@ export const fetchSongs = (user = '') => async (dispatch, getState) => {
 		&limit=18
 		${lastfmKeyAndConfig}`
 	);
-
+	// Note: the "limit" in the Last.fm request doesn't count the currently playing track, so splice the results to keep the total count at 18
 	dispatch( { 
 		type: 'FETCH_SONGS',
-		payload: response.data.recenttracks.track
+		payload: response.data.recenttracks.track.splice(0,18)
 	});
 };
 
