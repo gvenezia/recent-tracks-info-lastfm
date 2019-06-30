@@ -15,6 +15,8 @@ class App extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
+		console.log(event);
+		alert('A name was submitted: ' + event.target.value);
 		// this.props.setUser();
 	}
 
@@ -30,18 +32,12 @@ class App extends Component {
 			<div className="ui container">
 				<h1>
 					What Has Gaetano
-					{/*<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
+					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
 						&nbsp;
-	          <form 
-	            className="ui form" 
-	            onSubmit={this.handleSubmit} 
-	          >
-	            <input 
-								type="text"
-								placeholder="_______________"
-	            />
-	          </form>
-					</span>*/} 
+			          <form className="ui form" onSubmit={this.handleSubmit} >
+			            <input type="text" placeholder="_______________"/>
+			          </form>
+					</span>
 					 &nbsp;Been Listening to?
 		 		</h1>
 				<RecentPlaysList />

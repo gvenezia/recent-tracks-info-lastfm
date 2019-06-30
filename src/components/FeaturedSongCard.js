@@ -26,10 +26,11 @@ class FeaturedSongCard extends Component {
 					  <div className="content">
 					    <p className="header">"{title}"</p>
 					    <div className="meta">
-					     <span className="date">
-					     	{ exists(song['@attr']) === true ?
-					      		'Currently listening':
-					      		date }</span>
+					    	<span className="date">
+						     	{ exists(song['@attr']) === true ?
+						      		'Currently listening':
+						      		date }
+			      			</span>
 					    </div>
 					    <div className="description">
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 

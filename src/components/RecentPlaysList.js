@@ -13,8 +13,6 @@ class RecentPlaysList extends Component {
 
 		let { songs, artists, credits, width } = this.props;
 
-		console.log(width);
-
 		// Map over all songs, checking for properties then returning JSX for each song
 		return songs.map( (song, i) => {
 

@@ -20,13 +20,15 @@ export const setWidth = (width) => dispatch => {
 }
 
 export const fetchSongsAndArtists = () => async (dispatch, getState) => {
-	const URIEncodedUser = encodeURIComponent(getState().user)
+	let { songs, artists, user } = getState();	
 
-	const stateMbids = _.uniq(_.map( getState().songs, 'mbid'));
+	const URIEncodedUser = encodeURIComponent(user);
+
+	const stateMbids = _.uniq(_.map(songs, 'mbid'));
 
 	await dispatch(fetchSongs(URIEncodedUser));
 
-	let { songs, artists } = getState();	
+	
 
 	// Helper function sourced from: https://ilikekillnerds.com/2016/05/removing-duplicate-objects-array-property-name-javascript/ 
 	let newSongs = songs.filter((currObj, i, originalArr) => {
