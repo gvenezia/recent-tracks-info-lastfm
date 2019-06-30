@@ -26,14 +26,12 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 
 	const stateMbids = _.uniq(_.map(songs, 'mbid'));
 
-	await dispatch(fetchSongs(URIEncodedUser));
-
-	
+	await dispatch(fetchSongs(URIEncodedUser));	
 
 	// Helper function sourced from: https://ilikekillnerds.com/2016/05/removing-duplicate-objects-array-property-name-javascript/ 
-	let newSongs = songs.filter((currObj, i, originalArr) => {
-		let urls = originalArr.map(currMapObj => currMapObj.url);
-        return urls.indexOf(currObj.url) === i; // .indexOf finds the first instance of the url, so every subsequent url in the array won't return `true` (ie be included in the filtered array) bc it won't match the current index `i`
+	let urls = songs.map(currMapObj => currMapObj.url);
+	let newSongs = songs.filter((currObj, i,) => {
+        return urls.indexOf(currObj.url) === i; // .indexOf finds the first instance of the url, and ignores any duplicates after the first instance so every subsequent url in the array won't return `true` (ie be included in the filtered array) bc it won't match the current index `i`
     });
 
 	newSongs = newSongs.filter(song => stateMbids.indexOf(song.mbid) === -1);
