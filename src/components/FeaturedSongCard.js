@@ -3,6 +3,8 @@ import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 
+import Links from './Links';
+
 class FeaturedSongCard extends Component {
 	render() {
 		// Helper function to test whether a property exists
@@ -59,6 +61,10 @@ class FeaturedSongCard extends Component {
 									})
 								}
 					    </p>
+					    <Links 
+							artist={artist}
+							url={url}
+							creditObj={creditObj}/>
 
 					    <ReactTooltip
 					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
@@ -66,26 +72,8 @@ class FeaturedSongCard extends Component {
 					    	place="left" 
 					    	type="dark" 
 					    	effect="float" />
+
 						</div>
-						<div className="extra content">
-						External Links: &nbsp;
-					    <a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
-					    	<img className="link-icons" 
-						    	src="discogs-icon.jpeg"
-						    	alt="discogs-icon"/>
-				    	</a>
-				    	<a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={url}>
-					    	<i id="lastfm-icon" className="lastfm icon red"></i>
-				    	</a>
-				    	<a target="_blank"
-					    	rel="noopener noreferrer"
-					    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
-				    	
-					</div>
 					  </div>
 					</div>
 				</div>

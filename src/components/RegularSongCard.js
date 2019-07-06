@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 
+import Links from './Links';
+
 import '../index.css';
 
 class RegularSongCard extends Component {
@@ -56,36 +58,19 @@ class RegularSongCard extends Component {
 								})
 							}
 						</p>
+					</div>
 
-					    <ReactTooltip
+					<Links 
+						artist={artist}
+						url={url}
+						creditObj={creditObj}/>
+		    	</div>	
+		    	<ReactTooltip
 					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
 					    	id={artist + "tip"} 
 					    	place="left" 
 					    	type="dark" 
 					    	effect="float" />
-					</div>
-					<div className="extra content">
-						<p>Credits: </p>
-						<p>
-							External Links: &nbsp;
-						    <a target="_blank"
-						    	rel="noopener noreferrer"
-						    	href={"https://www.discogs.com/" + (exists(creditObj) ? creditObj.uri : '')}>
-						    	<img className="link-icons" 
-							    	src="discogs-icon.jpeg"
-							    	alt="discogs-icon"/>
-					    	</a> &nbsp;
-					    	<a target="_blank"
-						    	rel="noopener noreferrer"
-						    	href={url}>
-						    	<i id="lastfm-icon" className="lastfm icon red"></i>
-					    	</a>
-					    	<a target="_blank"
-						    	rel="noopener noreferrer"
-						    	href={"https://en.wikipedia.org/wiki/" + encodeURIComponent(artist) }>Wiki</a>
-				    	</p>
-					</div>
-		    	</div>	
 			</div>
 		)
 	}

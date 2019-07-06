@@ -1,7 +1,12 @@
 .link-icons {
-	width: 20px;	
+	height: 20px;	
+	transform: translate(0,.21em);
 }
 
-#lastfm-icon {
+.wiki-icon {
+	height:22px;
+}
+
+img .lastfm-icon {
 	font-size: 20px;
 }

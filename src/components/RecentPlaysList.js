@@ -14,7 +14,7 @@ class RecentPlaysList extends Component {
 		let { songs, artists, credits, width } = this.props;
 
 		// Map over all songs, checking for properties then returning JSX for each song
-		return songs.map( (song, i) => {
+		return songs.slice(0,18).map( (song, i) => {
 
 			// Check that all properties exist and assign accordingly
 			let title   = exists(song.name) ? song.name : 'N/A',
