@@ -17,15 +17,15 @@ class RecentPlaysList extends Component {
 		return songs.slice(0,18).map( (song, i) => {
 
 			// Check that all properties exist and assign accordingly
-			let title   = exists(song.name) ? song.name : 'N/A',
+			let title  = exists(song.name) ? song.name : 'N/A',
 				artist = exists(song.artist) ? song.artist['#text'] : 'N/A',
 				album  = exists(song.album) ? song.album['#text'] : 'N/A',
 				date   = exists(song.date) ? moment.unix(song.date.uts).fromNow() : 'N/A',
 				url    = exists(song.url) ? song.url : 'https://www.last.fm/search?q=' + artist;
 
 			// Find the current song's artist info and credits
-			const artistObj = artists.find( curr => curr.name === artist),
-				  creditObj = credits.find( curr => curr.album === album);
+			const artistObj = artists.find( curr => curr.name === artist ),
+				  creditObj = credits.find( curr => curr.album === album );
 
 			// Tags that shouldn't display
 			const blockedTags = [ `${artist}`, 'seen live', 'fip', 'under 2000 listeners', 'nickelodeon'];
@@ -96,8 +96,7 @@ class RecentPlaysList extends Component {
 		return (
 			<div className='ui stackable grid'>
 				{ this.renderList() }
-			</div> 
-
+			</div>
 		)
 	}
 }

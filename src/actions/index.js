@@ -28,7 +28,6 @@ export const fetchSongsAndArtists = () => async (dispatch, getState) => {
 	await dispatch(fetchSongs(URIEncodedUser));	
 
 	let { songs, artists } = getState();	
-
 	
 	// Helper function sourced from: https://ilikekillnerds.com/2016/05/removing-duplicate-objects-array-property-name-javascript/ 
 	// const urlsArr = songs.map(currMapObj => currMapObj.url);

@@ -20,7 +20,7 @@ class Links extends Component{
 				    	<img className="link-icons"
 				    		title="Link to album page on Discogs" 
 				    		style={{verticalAlign: "baseline"}}
-					    	src="discogs-icon.jpeg"
+					    	src="discogs-vinyl.svg"
 					    	alt="discogs-icon"/>
 			    	</a> &nbsp;
 			    	<a target="_blank"

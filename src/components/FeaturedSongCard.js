@@ -38,7 +38,7 @@ class FeaturedSongCard extends Component {
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         		data-for={artist + "-featured-tip"}>
 					         {artist}
-					         </span> — {album} ({exists(creditObj) ? creditObj.label : 'Loading...'})
+					         </span> — {album} ({exists(creditObj) ? creditObj.label : 'N/A'})
 					    </div>
 						<div className="extra">
 					    <p>

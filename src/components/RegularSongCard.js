@@ -37,8 +37,8 @@ class RegularSongCard extends Component {
 						<div className="description">
 							<span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 				         		data-for={artist + "tip"}>
-				         {artist}
-				         </span> — {album} ({exists(creditObj) ? creditObj.label : 'Loading...'})
+					        {artist}
+					        </span> — {album} ({exists(creditObj) ? creditObj.label : 'N/A'})
 						</div>
 					</div>
 					<div className="extra content">
