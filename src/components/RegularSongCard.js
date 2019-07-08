@@ -16,7 +16,7 @@ class RegularSongCard extends Component {
 
 		return (
 			<div key={key} className="four wide column">
-				<div style={{marginTop: '14px'}} className="ui card centered">
+				<div className="ui card centered">
 					<div className="image">
 						<img alt="album art" 
 							src={ song.image[3]['#text'].length > 0 ?

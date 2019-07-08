@@ -9,6 +9,10 @@ body {
 	background-color: rgba(250, 250, 250, 0.2);
 }
 
+.ui.card.centered {
+	margin-bottom: 0px;
+}
+
 .link-icons {
 	height: 20px;	
 	transform: translate(0,.21em);

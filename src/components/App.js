@@ -16,7 +16,7 @@ class App extends Component {
 
 	componentDidMount() {
 		this.props.setWidth(window.innerWidth);
-		// this.props.setUser();
+		this.props.setUser();
 		this.props.fetchSongsAndArtists();
 		this.checkAPI();
 	}
@@ -25,13 +25,12 @@ class App extends Component {
 		const value = event.target.value;
 		console.log(value);
 		this.setState({user: value})
-		
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log(this.state.user);
 		this.props.setUser(this.state.user);
+		this.props.fetchSongsAndArtists()
 	}
 
 	checkAPI(){
