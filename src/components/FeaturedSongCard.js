@@ -53,13 +53,12 @@ class FeaturedSongCard extends Component {
 					    </p>
 					    <p>
 					    	<i className="music icon"></i>
-					    	{ 
-					    		tagsF.map( (tag, i) => {
-											return i + 1 === tagsF.length ?
-												`${tag.name}` :
-												`${tag.name}, `;
-									})
-								}
+					    	{ tagsF.map( (tag, i) => {
+								return i + 1 === tagsF.length ?
+									`${tag.name}` :
+									`${tag.name}, `;
+								})
+				    		}
 					    </p>
 					    <Links 
 							artist={artist}
@@ -80,7 +79,6 @@ class FeaturedSongCard extends Component {
 			</div>
 		)
 	}
-
 }
 
 export default connect()(FeaturedSongCard);

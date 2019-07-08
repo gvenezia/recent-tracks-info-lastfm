@@ -18,12 +18,10 @@ class RegularSongCard extends Component {
 			<div key={key} className="four wide column">
 				<div style={{marginTop: '14px'}} className="ui card centered">
 					<div className="image">
-						<img 
-							alt="album art" 
+						<img alt="album art" 
 							src={ song.image[3]['#text'].length > 0 ?
 		    						 song.image[3]['#text'] :
-		    						 'https://semantic-ui.com/images/wireframe/image.png'}
-						/>
+		    						 'https://semantic-ui.com/images/wireframe/image.png'} />
 					</div>
 					<div className="content">
 						<p className="header">"{title}"</p>
