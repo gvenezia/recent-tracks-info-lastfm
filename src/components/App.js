@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import RecentPlaysList from './RecentPlaysList';
 import { connect } from 'react-redux';
+
+import RecentPlaysList from './RecentPlaysList';
 
 import { setUser, setWidth, fetchSongsAndArtists } from '../actions';
 
@@ -18,13 +19,14 @@ class App extends Component {
 		this.props.setWidth(window.innerWidth);
 		this.props.setUser();
 		this.props.fetchSongsAndArtists();
+		this.setState({user: this.props.user});
 		this.checkAPI();
 	}
 
 	handleChange(event){
 		const value = event.target.value;
 		console.log(value);
-		this.setState({user: value})
+		this.setState({user: value});
 	}
 
 	handleSubmit(event) {
@@ -41,26 +43,42 @@ class App extends Component {
 	}
 	
 	render(){
+		let {user} = this.props;
 		return (
 			<div className="ui container">
-				<h1>
-					What Has Gaetano
-					<span className="ui transparent input" style={{'width': '100px', 'color': 'red'}} >
-						&nbsp;
-			          <form className="ui form" onSubmit={this.handleSubmit} >
-			            <input type="text" 
-			            	id="title"
-            				value={this.state.user}
-            				onChange={this.handleChange} 
-            				placeholder="_______________"/>
-			          </form>
-					</span>
-					 &nbsp;Been Listening to?
-		 		</h1>
+				<div id="menu-header">
+					<h1>
+						Extended Plays &nbsp;
+						<span className="ui" 
+							data-tooltip="A feed of recently played music with extra information and prepulated external links" 
+							data-position="bottom center"
+							data-variation="large">
+							<i className="info circle small icon" />
+						</span>
+
+					</h1>
+					<div className="auth">
+						<span>Signed in as &nbsp;</span>
+						<p className="ui transparent input" >
+					          <form className="ui transparent input" onSubmit={this.handleSubmit} >
+					            <input type="text" 
+					            	id="title"
+									value={this.state.user}
+									onChange={this.handleChange}
+									placeholder={user}/>
+					          </form>
+						</p>
+					</div>
+				</div>
+
+				
+
 				<RecentPlaysList />
 			</div>
 		)
 	}	
 }
 
-export default connect(null, { setUser, setWidth, fetchSongsAndArtists })(App);
+const mapStateToProps = state => ({ user: state.user})
+
+export default connect(mapStateToProps, { setUser, setWidth, fetchSongsAndArtists })(App);

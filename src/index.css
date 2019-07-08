@@ -4,6 +4,16 @@ body {
 	background-size: 100% 2000px;
 }
 
+h1 {
+	display: inline-block;
+	padding-top: 10px;
+}
+
+.auth {
+	display: inline-block;
+	float: right;
+}
+
 .ui.items.segment,
 .ui.card  {
 	background-color: rgba(250, 250, 250, 0.2);
@@ -11,6 +21,14 @@ body {
 
 .ui.card.centered {
 	margin-bottom: 0px;
+}
+
+.ui.transparent.input {
+	border-bottom: 1px black solid;
+}
+
+input, .ui.transparent.input, .ui.form {
+	background-color: rgba(250, 250, 250, 0.0);
 }
 
 .link-icons {
@@ -24,4 +42,8 @@ body {
 
 img .lastfm-icon {
 	font-size: 20px;
+}
+
+#menu-header {
+	margin-top: 10px;
 }
