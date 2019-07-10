@@ -66,9 +66,7 @@ class FeaturedSongCard extends Component {
 					    <ReactTooltip
 					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
 					    	id={artist + "-featured-tip"} 
-					    	place="left" 
-					    	type="dark" 
-					    	effect="float" />
+					    	place="bottom" />
 
 						</div>
 					  </div>

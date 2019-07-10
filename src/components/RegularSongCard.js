@@ -64,11 +64,9 @@ class RegularSongCard extends Component {
 						creditObj={creditObj}/>
 		    	</div>	
 		    	<ReactTooltip
-					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
-					    	id={artist + "tip"} 
-					    	place="left" 
-					    	type="dark" 
-					    	effect="float" />
+			    	getContent={(dataTip) => `Plays: ${dataTip}`} 
+			    	id={artist + "tip"} 
+			    	place="bottom" />
 			</div>
 		)
 	}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
 
 import RecentPlaysList from './RecentPlaysList';
 
@@ -44,24 +45,22 @@ class App extends Component {
 	
 	render(){
 		let {user} = this.props;
+		let tooltip = `A feed of recently played music with extra information and prepopulated external links.\n Input your username on the right`
 		return (
 			<div className="ui grid container">
 				<div className='ui stackable grid'>
 					<div className="left aligned bottom aligned eight wide column">
 						<h1>
 							Extended Plays &nbsp;
-							<span className="ui" 
-								data-tooltip="A feed of recently played music with extra information and prepulated external links" 
-								data-position="bottom center"
-								data-variation="large">
-								<i className="info circle small icon" />
-							</span>
-
+							<i className="info circle small icon"
+								data-place="bottom"
+								data-tip="A feed of recently played music with extra information and prepopulated external links.\n Input your username on the right"
+								 />
 						</h1>
 					</div>
 					<div className="right aligned bottom aligned eight wide column">
 						<div className="auth ui item">
-							<span>Signed in as &nbsp;</span>
+							<span>Showing listening history for &nbsp;</span>
 							<div className="ui transparent input" >
 						          <form className="ui transparent input" onSubmit={this.handleSubmit} >
 						            <input type="text" 
@@ -75,6 +74,7 @@ class App extends Component {
 					</div>
 
 					<RecentPlaysList />
+				 	<ReactTooltip />
 				</div>
 			</div>
 		)
