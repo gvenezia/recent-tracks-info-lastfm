@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && echo 'last-fm.gvenezia.com' > build/CNAME",
+    "deploy": "npm run build && surge",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

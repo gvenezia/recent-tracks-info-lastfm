@@ -10,7 +10,7 @@ class App extends Component {
 	constructor(){
 		super();
 
-		this.state = {user: ''};
+		this.state = {user: 'grrtano'};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,15 +18,13 @@ class App extends Component {
 
 	componentDidMount() {
 		this.props.setWidth(window.innerWidth);
-		this.props.setUser();
+		this.props.setUser(this.state.user);
 		this.props.fetchSongsAndArtists();
-		this.setState({user: this.props.user});
 		this.checkAPI();
 	}
 
 	handleChange(event){
 		const value = event.target.value;
-		console.log(value);
 		this.setState({user: value});
 	}
 
@@ -45,7 +43,7 @@ class App extends Component {
 	
 	render(){
 		let {user} = this.props;
-		
+
 		return (
 			<div className="ui grid container">
 				<div className='ui stackable grid'>
@@ -53,20 +51,19 @@ class App extends Component {
 						<h1>
 							Extended Plays &nbsp;
 							<i className="info circle small icon"
-								data-tip
-								data-for="info-tip"/>
+								data-tip data-for="info-tip"/>
 						</h1>
 					</div>
 					<div className="right aligned bottom aligned eight wide column">
 						<div className="auth ui item">
 							<span>Showing listening history for &nbsp;</span>
 							<div className="ui transparent input" >
-						          <form className="ui transparent input" onSubmit={this.handleSubmit} >
+						          <form className="ui transparent input" 
+						          		onSubmit={this.handleSubmit} >
 						            <input type="text" 
-						            	id="title"
-										value={this.state.user}
-										onChange={this.handleChange}
-										placeholder={user}/>
+							            	id="title"
+											value={this.state.user}
+											onChange={this.handleChange}/>
 						          </form>
 							</div>
 						</div>
