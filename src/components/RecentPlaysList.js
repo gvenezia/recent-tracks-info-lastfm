@@ -8,6 +8,10 @@ import RegularSongCard from './RegularSongCard';
 class RecentPlaysList extends Component {
 
 	renderList() {
+		
+	} // End renderList()
+
+	render(){
 		// Helper function to test whether a property exists
 		const exists = x => typeof x !== 'undefined';
 
@@ -89,15 +93,7 @@ class RecentPlaysList extends Component {
 			}
 
 			
-		}); 
-	} // End renderList()
-
-	render(){
-		return (
-			<div className='ui stackable grid'>
-				{ this.renderList() }
-			</div>
-		)
+		});
 	}
 }
 

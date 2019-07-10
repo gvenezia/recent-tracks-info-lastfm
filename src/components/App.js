@@ -46,7 +46,8 @@ class App extends Component {
 		let {user} = this.props;
 		return (
 			<div className="ui container">
-				<div id="menu-header">
+				<div className='ui stackable grid'>
+					<div className="eight wide column">
 					<h1>
 						Extended Plays &nbsp;
 						<span className="ui" 
@@ -57,23 +58,24 @@ class App extends Component {
 						</span>
 
 					</h1>
-					<div className="auth">
-						<span>Signed in as &nbsp;</span>
-						<p className="ui transparent input" >
-					          <form className="ui transparent input" onSubmit={this.handleSubmit} >
-					            <input type="text" 
-					            	id="title"
-									value={this.state.user}
-									onChange={this.handleChange}
-									placeholder={user}/>
-					          </form>
-						</p>
 					</div>
+					<div className="eight wide column">
+						<div className="auth">
+							<span>Signed in as &nbsp;</span>
+							<p className="ui transparent input" >
+						          <form className="ui transparent input" onSubmit={this.handleSubmit} >
+						            <input type="text" 
+						            	id="title"
+										value={this.state.user}
+										onChange={this.handleChange}
+										placeholder={user}/>
+						          </form>
+							</p>
+						</div>
+					</div>
+
+					<RecentPlaysList />
 				</div>
-
-				
-
-				<RecentPlaysList />
 			</div>
 		)
 	}	
