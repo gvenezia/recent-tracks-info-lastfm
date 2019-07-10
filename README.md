@@ -4,19 +4,16 @@ This app uses the Last.fm API to fetch your most recently played songs and displ
 [Check it out](http://last-fm.gvenezia.com/) (Hosted with [Surge](https://surge.sh/))
 
 ### User Stories
-- View my (Gaetano's) recent listening history
 - View the song, date and time of listen, album, album art, artist, basic bio, artist genres
-– Navigate to an album's Discogs page with dynamically populated external links
+– Navigate to an related Discogs, Last.fm, and Wikipedia pages with dynamically populated external links
 - View is responsive to screen size
-- ~Last.fm users can pull up their recent listening data from last.fm~ (in progress)
-- ~Guests can choose from a pre-defined list of usernames~ (in progress)
+- Last.fm users can pull up their recent listening data from last.fm
 - ~Guests can see some basic data visualizations of their listening history and artist info~ (in progress)
 
 ### To-Do
 UI elements:
 - Ability to change the view from expanded to collapsed 
 - Add user input for username, number of recent songs, etc.
-- Add links for all relevant info
 - Collapsed/Consolidated cards for repeated artists or albums
 
 Data Viz:
