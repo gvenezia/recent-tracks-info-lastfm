@@ -45,24 +45,24 @@ class App extends Component {
 	render(){
 		let {user} = this.props;
 		return (
-			<div className="ui container">
+			<div className="ui grid container">
 				<div className='ui stackable grid'>
-					<div className="eight wide column">
-					<h1>
-						Extended Plays &nbsp;
-						<span className="ui" 
-							data-tooltip="A feed of recently played music with extra information and prepulated external links" 
-							data-position="bottom center"
-							data-variation="large">
-							<i className="info circle small icon" />
-						</span>
+					<div className="left aligned bottom aligned eight wide column">
+						<h1>
+							Extended Plays &nbsp;
+							<span className="ui" 
+								data-tooltip="A feed of recently played music with extra information and prepulated external links" 
+								data-position="bottom center"
+								data-variation="large">
+								<i className="info circle small icon" />
+							</span>
 
-					</h1>
+						</h1>
 					</div>
-					<div className="eight wide column">
-						<div className="auth">
+					<div className="right aligned bottom aligned eight wide column">
+						<div className="auth ui item">
 							<span>Signed in as &nbsp;</span>
-							<p className="ui transparent input" >
+							<div className="ui transparent input" >
 						          <form className="ui transparent input" onSubmit={this.handleSubmit} >
 						            <input type="text" 
 						            	id="title"
@@ -70,7 +70,7 @@ class App extends Component {
 										onChange={this.handleChange}
 										placeholder={user}/>
 						          </form>
-							</p>
+							</div>
 						</div>
 					</div>
 

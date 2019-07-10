@@ -5,13 +5,7 @@ body {
 }
 
 h1 {
-	display: inline-block;
 	padding-top: 10px;
-}
-
-.auth {
-	display: inline-block;
-	float: right;
 }
 
 .ui.items.segment,
@@ -42,8 +36,4 @@ input, .ui.transparent.input, .ui.form {
 
 img .lastfm-icon {
 	font-size: 20px;
-}
-
-#menu-header {
-	margin-top: 10px;
 }
