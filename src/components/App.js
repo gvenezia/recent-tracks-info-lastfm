@@ -45,7 +45,7 @@ class App extends Component {
 	
 	render(){
 		let {user} = this.props;
-		let tooltip = `A feed of recently played music with extra information and prepopulated external links.\n Input your username on the right`
+		
 		return (
 			<div className="ui grid container">
 				<div className='ui stackable grid'>
@@ -53,9 +53,8 @@ class App extends Component {
 						<h1>
 							Extended Plays &nbsp;
 							<i className="info circle small icon"
-								data-place="bottom"
-								data-tip="A feed of recently played music with extra information and prepopulated external links.\n Input your username on the right"
-								 />
+								data-tip
+								data-for="info-tip"/>
 						</h1>
 					</div>
 					<div className="right aligned bottom aligned eight wide column">
@@ -74,7 +73,12 @@ class App extends Component {
 					</div>
 
 					<RecentPlaysList />
-				 	<ReactTooltip />
+				 	<ReactTooltip id="info-tip" place="bottom">
+					 		<p>A feed of recently played music with extra information and prepopulated external links.</p>
+					 		<p>If you have a last-fm username, type it into the underlined input form and press enter to see your results!</p>
+					 		<p>I've preloaded my username and listening history in case you don't use last-fm but still want to see results.</p>
+					 		<p>Hover or click on artist name to see how many times you've played that artist.</p>
+				 	</ReactTooltip>
 				</div>
 			</div>
 		)

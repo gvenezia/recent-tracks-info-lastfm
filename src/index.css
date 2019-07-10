@@ -37,3 +37,7 @@ input, .ui.transparent.input, .ui.form {
 img .lastfm-icon {
 	font-size: 20px;
 }
+
+#info-tip {
+	max-width: 250px;
+}
