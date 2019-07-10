@@ -1,10 +1,11 @@
-# What Have You Been Listening to?
-This app uses the Last.fm API to fetch your most recently played songs and display them as a list of cards. Each card contains extra information, like artist bio and genre tags from music databases like Last.fm and Discogs. No single music database or streaming service has all of this information, so the main idea for this project is to consolidate relevant information to a single stream.
+# Extended Plays
+A feed of recently played music with extra information and prepopulated external links. Uses the Last.fm API to fetch your most recently played songs and display them as a list of cards with Semantic UI. Each card contains extra information, like artist bio and genre tags from music databases like Last.fm and Discogs. No single music database or streaming service has all of this information, so the main idea for this project is to consolidate relevant information to a single stream.
 
 [Check it out](http://last-fm.gvenezia.com/) (Hosted with [Surge](https://surge.sh/))
 
 ### User Stories
 - View the song, date and time of listen, album, album art, artist, basic bio, artist genres
+– Can view more info with tooltips while retaining a clean design
 – Navigate to an related Discogs, Last.fm, and Wikipedia pages with dynamically populated external links
 - View is responsive to screen size
 - Last.fm users can pull up their recent listening data from last.fm
