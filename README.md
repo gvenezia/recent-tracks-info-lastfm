@@ -1,5 +1,5 @@
 # Extended Plays
-A feed of recently played music with extra information and prepopulated external links. Uses the Last.fm API to fetch your most recently played songs and display them as a list of cards with Semantic UI. Each card contains extra information, like artist bio and genre tags from music databases like Last.fm and Discogs. No single music database or streaming service has all of this information, so the main idea for this project is to consolidate relevant information to a single stream.
+A real-time feed of recently played music with extra information and prepopulated external links. Uses the Last.fm API to fetch your most recently played songs and display them as a list of cards with Semantic UI. Each card contains extra information, like artist bio and genre tags from music databases like Last.fm and Discogs. No single music database or streaming service has all of this information, so the main idea for this project is to consolidate relevant information to a single stream.
 
 [Check it out](http://last-fm.gvenezia.com/) (Hosted with [Surge](https://surge.sh/))
 
