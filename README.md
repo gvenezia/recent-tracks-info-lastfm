@@ -42,6 +42,12 @@ Testing:
 
 #### [Last.fm API Terms of Service](https://www.last.fm/api/tos)
 
+### Views
+| Mobile | Desktop |
+| --- | --- |
+| ![Mobile](https://user-images.githubusercontent.com/31457853/61060374-45f81000-a3af-11e9-9016-3971e9eff545.png) | ![Desktop](https://user-images.githubusercontent.com/31457853/61080013-f3334e00-a3d8-11e9-83ac-e31cc4e7fd1f.png) |
+ 
+
 
 
 ---  
