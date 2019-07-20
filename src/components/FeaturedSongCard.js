@@ -14,7 +14,7 @@ class FeaturedSongCard extends Component {
 		let { song, title, artist, album, date, tagsF, artistObj, creditObj, key, url } = this.props;
 
 		return (
-			<div key={key} className="eight wide column">
+			<div key={key} className={ window.innerWidth < 992 ? 'two column row' :  'eight wide column' }>
 				<section className="ui items segment">
 					<div className="ui item">
 					  <div style={{'width': '250px'}} className="image">

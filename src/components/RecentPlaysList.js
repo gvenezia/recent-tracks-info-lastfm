@@ -36,7 +36,7 @@ class RecentPlaysList extends Component {
 			}
 
 			// Create larger cards for the two most recent tracks
-			if (width < 500){
+			if (width < 768){
 				return (
 					<RegularSongCard
 						song={song} 

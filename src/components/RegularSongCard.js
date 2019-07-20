@@ -17,12 +17,12 @@ class RegularSongCard extends Component {
 		return (
 			<div key={key} className="four wide column">
 				<section className="ui card centered">
-					<figure className="image">
+					<div className="image">
 						<img alt="album art" 
 							src={ song.image[3]['#text'].length > 0 ?
 		    						 song.image[3]['#text'] :
 		    						 'https://semantic-ui.com/images/wireframe/image.png'} />
-					</figure>
+					</div>
 					<div className="content">
 						<h2 className="header">"{title}"</h2>
 						<p className="meta">
