@@ -16,36 +16,36 @@ class RegularSongCard extends Component {
 
 		return (
 			<div key={key} className="four wide column">
-				<div className="ui card centered">
-					<div className="image">
+				<section className="ui card centered">
+					<figure className="image">
 						<img alt="album art" 
 							src={ song.image[3]['#text'].length > 0 ?
 		    						 song.image[3]['#text'] :
 		    						 'https://semantic-ui.com/images/wireframe/image.png'} />
-					</div>
+					</figure>
 					<div className="content">
-						<p className="header">"{title}"</p>
-						<div className="meta">
+						<h2 className="header">"{title}"</h2>
+						<p className="meta">
 							<span className="date">
 						     	{ exists(song['@attr']) === true ?
 						      		'Currently listening':
 						      		date }
 			      			</span>
-						</div>
-						<div className="description">
+						</p>
+						<p className="description">
 							<span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 				         		data-for={artist + "tip"}>
 					        {artist}
 					        </span> — {album} ({exists(creditObj) ? creditObj.label : 'N/A'})
-						</div>
+						</p>
 					</div>
 					<div className="extra content">
-						<p>
+						<summary>
 							<i className="info icon" />
 							{ exists(artistObj) ? 
 								artistObj.bio.content.slice(0, 100) + '...' :
 								'Loading...' }
-						</p>
+						</summary>
 						<p>
 							<i className="music icon"></i>
 							{ 
@@ -62,7 +62,7 @@ class RegularSongCard extends Component {
 						artist={artist}
 						url={url}
 						creditObj={creditObj}/>
-		    	</div>	
+		    	</section>	
 		    	<ReactTooltip
 			    	getContent={(dataTip) => `Plays: ${dataTip}`} 
 			    	id={artist + "tip"} 

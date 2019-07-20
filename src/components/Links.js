@@ -11,7 +11,7 @@ class Links extends Component{
 		const {artist, url, creditObj} = this.props;
 
 		return (
-			<div className="content">
+			<nav className="content">
 				<p>
 					External Links: &nbsp;
 				    <a target="_blank"
@@ -40,7 +40,7 @@ class Links extends Component{
 					    	alt="wiki-icon"/>
 			    	</a>
 		    	</p>
-			</div>
+			</nav>
 		)	
 	}
 }

@@ -15,7 +15,7 @@ class FeaturedSongCard extends Component {
 
 		return (
 			<div key={key} className="eight wide column">
-				<div className="ui items segment">
+				<section className="ui items segment">
 					<div className="ui item">
 					  <div style={{'width': '250px'}} className="image">
 					    <img alt="album art" 
@@ -25,53 +25,52 @@ class FeaturedSongCard extends Component {
 					  </div>
 					  <div className="content">
 					    <p className="header">"{title}"</p>
-					    <div className="meta">
+					    <p className="meta">
 					    	<span className="date">
 						     	{ exists(song['@attr']) === true ?
 						      		'Currently listening':
 						      		date }
 			      			</span>
-					    </div>
-					    <div className="description">
+					    </p>
+					    <p className="description">
 					      <span data-tip={ exists(artistObj) ? artistObj.stats.userplaycount : 'N/A'} 
 					         		data-for={artist + "-featured-tip"}>
 					         {artist}
 					         </span> — {album} ({exists(creditObj) ? creditObj.label : 'N/A'})
-					    </div>
+					    </p>
 						<div className="extra">
-					    <p>
-					      <i className="info icon"/>
-					      { exists(artistObj) && 
-					      	(artistObj.bio.content.length < 1 ?
-					      		'N/A' : 
-					      		artistObj.bio.content.length <= 375 ?
-					      			ReactHtmlParser(artistObj.bio.content) :
-					      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
-					      	
-					    </p>
-					    <p>
-					    	<i className="music icon"></i>
-					    	{ tagsF.map( (tag, i) => {
-								return i + 1 === tagsF.length ?
-									`${tag.name}` :
-									`${tag.name}, `;
-								})
-				    		}
-					    </p>
-					    <Links 
-							artist={artist}
-							url={url}
-							creditObj={creditObj}/>
+						    <summary>
+						      <i className="info icon"/>
+						      { exists(artistObj) && 
+						      	(artistObj.bio.content.length < 1 ?
+						      		'N/A' : 
+						      		artistObj.bio.content.length <= 375 ?
+						      			ReactHtmlParser(artistObj.bio.content) :
+						      			ReactHtmlParser(artistObj.bio.content.slice(0, 375) + '...')) }
+						      	
+						    </summary>
+						    <p>
+						    	<i className="music icon"></i>
+						    	{ tagsF.map( (tag, i) => {
+									return i + 1 === tagsF.length ?
+										`${tag.name}` :
+										`${tag.name}, `;
+									})
+					    		}
+						    </p>
+						    <Links 
+								artist={artist}
+								url={url}
+								creditObj={creditObj}/>
 
-					    <ReactTooltip
-					    	getContent={(dataTip) => `Plays: ${dataTip}`} 
-					    	id={artist + "-featured-tip"} 
-					    	place="bottom" />
-
+						    <ReactTooltip
+						    	getContent={(dataTip) => `Plays: ${dataTip}`} 
+						    	id={artist + "-featured-tip"} 
+						    	place="bottom" />
 						</div>
 					  </div>
 					</div>
-				</div>
+				</section>
 			</div>
 		)
 	}

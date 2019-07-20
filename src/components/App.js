@@ -42,39 +42,37 @@ class App extends Component {
 	}
 	
 	render(){
-		let {user} = this.props;
-
 		return (
 			<div className="ui grid container">
 				<div className='ui stackable grid'>
-					<div className="left aligned bottom aligned eight wide column">
+					<header className="left aligned bottom aligned eight wide column">
 						<h1>
 							Extended Plays &nbsp;
 							<i className="info circle small icon"
 								data-tip data-for="info-tip"/>
 						</h1>
-					</div>
-					<div className="right aligned bottom aligned eight wide column">
+					</header>
+					<header className="right aligned bottom aligned eight wide column">
 						<div className="auth ui item">
 							<span>Showing listening history for &nbsp;</span>
 							<div className="ui transparent input" >
-						          <form className="ui transparent input" 
-						          		onSubmit={this.handleSubmit} >
-						            <input type="text" 
-							            	id="title"
+								<form className="ui transparent input" 
+										onSubmit={this.handleSubmit} >
+									<input type="text" 
+									    	id="title"
 											value={this.state.user}
 											onChange={this.handleChange}/>
-						          </form>
+								</form>
 							</div>
 						</div>
-					</div>
+					</header>
 
 					<RecentPlaysList />
 				 	<ReactTooltip id="info-tip" place="bottom">
-					 		<p>A feed of recently played music with extra information and prepopulated external links.</p>
-					 		<p>If you have a last-fm username, type it into the underlined input form and press enter to see your results!</p>
-					 		<p>I've preloaded my username and listening history in case you don't use last-fm but still want to see results.</p>
-					 		<p>Hover or click on artist name to see how many times you've played that artist.</p>
+				 		<p>A feed of recently played music with extra information and prepopulated external links.</p>
+				 		<p>If you have a last-fm username, type it into the underlined input form and press enter to see your results!</p>
+				 		<p>I've preloaded my username and listening history in case you don't use last-fm but still want to see results.</p>
+				 		<p>Hover or click on artist name to see how many times you've played that artist.</p>
 				 	</ReactTooltip>
 				</div>
 			</div>
