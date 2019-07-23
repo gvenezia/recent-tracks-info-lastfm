@@ -117,13 +117,9 @@ export const fetchCredits = (song = '') => async (dispatch, getState) => {
 					payload: response
 				}); 
 			} else {
-				// console.log('No Discogs record for ' + song.name + ' by ' + song.artist['#text']);
+				console.log('No Discogs record for ' + song.name + ' by ' + song.artist['#text']);
 			}
 			
 		} 
 	);
-
-	// db.getRelease(176126, function(err, data){
-	// 	console.log(data);
-	// });
 }
