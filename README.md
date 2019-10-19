@@ -32,7 +32,7 @@ Testing:
 * Redux
 * React-redux
 * redux-thunk
-* npm w/ [axios](https://www.npmjs.com/package/axios), [react-html-parser](https://www.npmjs.com/package/react-html-parser), [lodash](https://lodash.com/)
+* npm w/ [axios](https://www.npmjs.com/package/axios), [react-html-parser](https://www.npmjs.com/package/react-html-parser), ~[lodash](https://lodash.com/)~ (migrated to native JS functions)
 * [Last.fm API](https://www.last.fm/api/intro)
 * Discogs API via [@bartve's library for Node](https://github.com/bartve/disconnect)
 * [Semantic UI](https://semantic-ui.com/)
