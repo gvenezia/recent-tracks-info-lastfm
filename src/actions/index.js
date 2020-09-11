@@ -5,7 +5,7 @@ import { lastfmKeyAndConfig } from "../apiKeys/lastfm.js";
 
 const db = disconnect.database();
 
-export const setUser = (user = "grrtano") => dispatch => {
+export const setUser = (user = "gaetano_venezia") => dispatch => {
   console.log("user:" + user);
 
   dispatch({

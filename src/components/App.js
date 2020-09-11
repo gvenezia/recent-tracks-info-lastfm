@@ -10,7 +10,7 @@ class App extends Component {
 	constructor(){
 		super();
 
-		this.state = {user: 'grrtano'};
+		this.state = {user: 'gaetano_venezia'};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
