@@ -8,7 +8,7 @@
     "disconnect": "^1.2.1",
     "eslint-plugin-react-hooks": "^1.6.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-html-parser": "^2.0.2",
